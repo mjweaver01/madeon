@@ -1,0 +1,1085 @@
+{%- comment -%}
+================================================================================
+sections/header-alternate.liquid
+Alternate brand header for Bullet Theme 6.0.0
+================================================================================
+{%- endcomment -%}
+
+{%- liquid 
+# -
+# Variables
+# - 
+    assign show_icons = section.settings.show_icons
+    assign hasBorder = section.settings.show_borders
+    assign outline_links = section.settings.outline_links
+    assign show_dropdown_caret = section.settings.show_dropdown_caret
+    assign expand_central = section.settings.expand_central
+
+# -
+# Blocks
+# -
+    assign hasMenu = false
+    assign hasUtility = false
+    assign block_count = section.blocks.size
+
+    for block in section.blocks
+    case block.type
+
+        when 'logo'
+            assign logoFont = block.settings.logo_font
+            assign logoFontBold = logoFont | font_modify: 'weight', 'bold'
+            assign logoFontItalic = logoFont | font_modify: 'style', 'italic'
+            assign logoFontBoldItalic = logoFontBold | font_modify: 'style', 'italic'
+
+            if block.settings.image == blank
+            capture logoBlock
+                echo logoFont | font_face: font_display: 'swap'
+                echo logoFontBold | font_face: font_display: 'swap'
+                echo logoFontItalic | font_face: font_display: 'swap'
+                echo logoFontBoldItalic | font_face: font_display: 'swap'
+            endcapture
+            endif
+
+        when 'menu'
+            assign hasMenu = true
+
+        when 'utility'
+            assign hasUtility = true
+            assign language_selector = false
+            assign country_selector = false
+            assign show_cart = block.settings.show_cart
+            assign show_search = block.settings.show_search
+
+            if block.settings.show_language and localization.available_languages.size > 1
+                assign language_selector = true
+            endif
+
+            if block.settings.show_country and localization.available_countries.size > 1
+                assign country_selector = true
+            endif
+
+    endcase
+    endfor
+
+# -
+# Header position type
+# -
+assign home_overlay = false
+if template.name == "index" and section.settings.homeOverlay
+    assign home_overlay = true
+    if section.settings.headerPosition == true 
+        assign headerPosition = 'fixed'
+    else 
+        assign headerPosition = 'absolute'
+    endif
+else 
+    if section.settings.headerPosition == true 
+        assign headerPosition = 'sticky'
+    else 
+        assign headerPosition = 'inherit'
+    endif
+endif
+
+# -
+# Header Overlay
+# -
+capture overlayHeader
+    if section.settings.bgFill == 'translucent'
+        echo '--headerBg: rgb(var(--bgRGB) / 0.5); background: var(--headerBg); backdrop-filter: blur(10px);'
+    elsif section.settings.bgFill == 'transparent'
+        echo '--headerBg: transparent; --globalBorder: none; background: transparent!important; border: none'
+    else
+        echo '--headerBg: var(--bg);'
+    endif
+endcapture
+-%}
+
+{%- style -%}
+{{ logoBlock }}
+
+/* ==========================================================================
+   DUPLICATE BULLET'S BASE HEADER STYLES FOR #mainHeaderAlt
+   These mirror the styles that target header#mainHeader and #headerGrid
+   ========================================================================== */
+
+header#mainHeaderAlt {
+    --globalBorder: var(--globalBorderWidth) solid var(--headerBorder, var(--globalBorderColor));
+    --buttonTransform: none;
+    --headerPosition: {{ headerPosition }};
+    --logoFontFamily: {{ logoFont.family }},{{ logoFont.fallback_families }};
+    --logoFontWeight: {{ logoFont.weight }};
+    --logoFontStyle: {{ logoFont.style }};
+    
+    position: relative;
+    border-block-end: var(--globalBorder);
+    background: var(--headerBg, var(--bgColor)); 
+    anchor-name: --header-anchor;
+}
+
+header#mainHeaderAlt ul,
+header#mainHeaderAlt li { list-style: none; margin: 0; padding: 0 }
+
+/*** Boxed mode */
+header#mainHeaderAlt[boxed-mode="true"] { 
+    margin: var(--mardding);
+    border: var(--globalBorder);
+    border-radius: var(--radius);
+}
+
+@media(width <= 777px) {
+    header#mainHeaderAlt[boxed-mode="true"] { margin: var(--margin) }
+}
+
+header#mainHeaderAlt[boxed-mode="true"] #headerGridAlt [menu-type="mega"] details.dm.lv1 > details-menu { 
+    --_maxHeight: 95vh; 
+    top: calc(var(--space-1) + var(--headerHeight)); 
+    border: none; 
+    border-radius: var(--radius-2); 
+    outline: var(--globalBorder) 
+}
+
+header#mainHeaderAlt[boxed-mode="true"] #headerGridAlt [menu-type="dropdown"] details.dm:where(.lv1,.lv2) > details-menu { 
+    border: none; 
+    border-radius: var(--radius); 
+    outline: var(--globalBorder) 
+}
+
+/*** Header grid */
+#headerGridAlt[show-borders="true"] { 
+    gap: var(--globalBorderWidth);
+    overflow: hidden;
+}
+#headerGridAlt[show-borders="true"] > * { outline: var(--globalBorder) }
+#headerGridAlt[show-borders="true"] [menu-type="mega"] [menu-list="2"] > * { outline: var(--globalBorder) }
+
+#headerGridAlt[dropdown-caret="false"] .dropdown-caret::after { all: unset }
+
+@media(width >= 777px) {
+    #headerGridAlt[expand-central="true"] { --grid-tc: minmax(100px, auto) minmax(100px, 1fr) auto }
+}
+
+/*** Logo */
+#headerGridAlt .bogo a { display: contents }
+#headerGridAlt .bogo { padding: var(--space-1) var(--mardding) }
+
+#headerGridAlt img.logo { 
+    width: auto; 
+    max-width: 100%; 
+    max-height: var(--logoImageSize); 
+    border-radius: 0; 
+    padding: 0; 
+    transform: none;
+}
+
+#headerGridAlt :not(img).logo {
+    --fontLine: 1;
+    font-size: var(--logoSize); 
+    font-weight: var(--logoFontWeight); 
+    font-style: var(--logoFontStyle); 
+    font-family: var(--logoFontFamily);
+}
+
+/*** Navigation */
+#headerGridAlt :where(.button,button,summary) {
+    color: var(--linkColor);
+    font-weight: 400;
+    text-align: center;
+}
+
+#headerGridAlt :where(.button,button,summary):is(:hover,:focus-visible) { color: var(--linkHover) }
+
+@media (hover: hover) {
+    #headerGridAlt[links-outline="true"] :not(.dont):where(.button,button,summary):hover {
+        outline: 1px solid currentColor;
+        outline-offset: -4px;
+    }
+}
+
+/*** Menu - First level */
+#headerGridAlt ul[menu-list="1"] { display: flex; flex-direction: row; flex-wrap: wrap; justify-content: var(--_jc) }
+
+/*** Dropdown menu */
+#headerGridAlt [menu-type="dropdown"] summary { anchor-name: --dropdown-anchor }
+#headerGridAlt [menu-type="dropdown"] .mob-scroller { justify-content: var(--_ji) }
+
+#headerGridAlt [menu-type="dropdown"] details.dm > details-menu {
+    position: absolute;
+    z-index: 99;
+    left: 0;
+    max-width: 100%;
+    width: 100vw;
+    border-block: var(--globalBorder);
+    background: var(--headerBg, var(--bgColor))
+}
+
+#headerGridAlt [menu-type="dropdown"] details.dm > details-menu ul { display: flex; flex-wrap: nowrap }
+
+#headerGridAlt [menu-type="dropdown"] details.dm.lv1 > details-menu { 
+    top: calc(-1 * var(--globalBorderWidth) + var(--headerHeight));
+    max-height: calc(100vh - var(--headerGroupHeight, 25vh));
+    overscroll-behavior: contain;
+}
+
+/*** Dropdown compact */
+#headerGridAlt [menu-type="dropdown-compact"] summary { anchor-name: --dropdown-compact-anchor }
+
+#headerGridAlt [menu-type="dropdown-compact"] details.dm > details-menu {
+    position: absolute;
+    z-index: 99;
+    outline: var(--globalBorder);
+    background: var(--headerBg, var(--bgColor));
+    position-anchor: --dropdown-compact-anchor;
+    top: anchor(bottom);
+    margin-block-start: var(--globalBorderWidth);
+}
+
+#headerGridAlt [menu-type="dropdown-compact"] details.dm.lv1 > details-menu { margin-block-start: calc(1px + var(--globalBorderWidth)) }
+
+#headerGridAlt [menu-type="dropdown-compact"] details.dm.lv2 > details-menu {
+    inset-inline-start: calc(anchor(right) + var(--globalBorderWidth));
+    inset-block-start: anchor(top);
+}
+
+/*** Mega menu */
+#headerGridAlt [menu-type="mega"] {
+    --_maxHeight: 100vh;
+}
+#headerGridAlt [menu-type="mega"] summary { anchor-name: --megaMenu-anchor }
+
+#headerGridAlt [menu-type="mega"] details.dm.lv1 > details-menu {
+    position-anchor: --megaMenu-anchor;
+    position: absolute;
+    top: calc(-1 * var(--globalBorderWidth) + var(--headerHeight));
+    inset-inline-start: 0;
+    z-index: 99;
+    max-width: 100%;
+    width: 100vw;
+    max-height: calc(var(--_maxHeight) - var(--headerHeight));
+    border-block: var(--globalBorder);
+    background: var(--headerBg, var(--bgColor));
+    overflow-y: auto;
+}
+
+#headerGridAlt [menu-type="mega"] details.dm:not(.lv1) summary {
+    font-weight: 800;
+    pointer-events: none;
+    padding-inline: var(--space-2);
+}
+
+#headerGridAlt [menu-type="mega"] details.dm:not(.lv1) summary:after { all: unset; }
+
+#headerGridAlt [menu-type="mega"] .lv1 .mob-scroller { justify-content: var(--_ji) }
+#headerGridAlt [menu-type="mega"] .lv1 .mob-scroller a.button { padding: var(--space-2); outline-offset: -2px }
+
+#headerGridAlt [menu-type="mega"] [menu-list="2"] { 
+    display: flex; 
+    gap: var(--globalBorderWidth);
+}
+
+@media (width <= 1080px) {
+    #headerGridAlt [menu-type="mega"] [menu-list="2"] { flex: 1 }
+}
+
+#headerGridAlt [menu-type="mega"] [menu-list="2"] [data-type="dropdown"] { flex: 1 }
+
+#headerGridAlt [menu-type="mega"] [menu-list="2"] > * { 
+    min-width: 12cqi; 
+    padding-inline: var(--padding);
+    padding-block-end: var(--space-2);
+    overflow: visible;
+}
+
+#headerGridAlt [menu-type="mega"] [menu-list="2"] [data-type="grouped-links"] {
+    padding-block-start: var(--space-2);
+}
+
+#headerGridAlt [menu-type="mega"] [menu-list="3"] { display: flex; flex-direction: column; flex: 1 }
+
+/*** Cart */
+#headerGridAlt[show-icons="true"] #counter { display: flex; align-items: center; gap: var(--space-1) }
+
+#headerGridAlt[show-icons="false"] #counter {
+    display: grid; 
+    place-items: center; 
+    aspect-ratio: 1 / 1;
+    padding: 0 0.5rem;
+    color: var(--color);
+    border: 1px solid var(--color);
+    border-radius: var(--radius);
+    text-indent: 0; 
+    font-weight: 400; 
+    font-size: smaller; 
+    line-height: 0;
+}
+
+/*** Localization form */
+#headerGridAlt .selector-language :where(component-loader,localization-form,form) { display: contents }
+
+#headerGridAlt .selector-language localization-form .langSwitch {
+    align-items: center;
+    gap: var(--space-1);
+    height: 100%;
+}
+
+#headerGridAlt .selector-language localization-form .langSwitch a {
+    text-transform: uppercase; 
+    margin: 0px; 
+    padding-inline: 0px; 
+    font-weight: normal;
+}
+
+#headerGridAlt .selector-language localization-form .langSwitch a[aria-current="true"] { text-decoration: underline; font-weight: bold }
+#headerGridAlt .selector-language localization-form .langSwitch a[data-count="1"] { padding-inline-start: var(--buttonPadding) }
+#headerGridAlt .selector-language localization-form .langSwitch a[data-count="2"] { padding-inline-end: var(--buttonPadding) }
+
+{% if home_overlay %}
+[class*="group-header"]:not(.main-header-alternate) { display: none }
+#mainHeaderAlt,
+#mainHeaderAlt details.dm > details-menu { {{ overlayHeader }} }
+{% endif %}
+
+/* ==========================================================================
+   ALTERNATE BRAND COLOR OVERRIDES
+   ========================================================================== */
+
+header#mainHeaderAlt {
+    --headerBg: {{ section.settings.header_bg_color }};
+    --bgColor: {{ section.settings.header_bg_color }};
+    --bg: {{ section.settings.header_bg_color }};
+    --color: {{ section.settings.header_text_color }};
+    --linkColor: {{ section.settings.header_text_color }};
+    --linkHover: {{ section.settings.header_link_hover }};
+    --headerBorder: {{ section.settings.header_border_color }};
+    --globalBorderColor: {{ section.settings.header_border_color }};
+    background-color: {{ section.settings.header_bg_color }};
+    color: {{ section.settings.header_text_color }};
+}
+
+#headerGridAlt :where(.button,button,summary,a) {
+    color: {{ section.settings.header_text_color }};
+}
+
+#headerGridAlt :where(.button,button,summary,a):is(:hover,:focus-visible) {
+    color: {{ section.settings.header_link_hover }};
+}
+
+#headerGridAlt .utility a,
+#headerGridAlt .utility button {
+    color: {{ section.settings.header_text_color }};
+}
+
+#headerGridAlt .utility a:hover,
+#headerGridAlt .utility button:hover {
+    color: {{ section.settings.header_link_hover }};
+}
+
+/* Icons / SVGs */
+#headerGridAlt svg {
+    color: {{ section.settings.header_text_color }};
+    fill: {{ section.settings.header_text_color }};
+}
+
+#headerGridAlt a:hover svg,
+#headerGridAlt button:hover svg {
+    color: {{ section.settings.header_link_hover }};
+    fill: {{ section.settings.header_link_hover }};
+}
+
+/* Dropdown menus */
+#headerGridAlt details-menu,
+#headerGridAlt details[open] > details-menu {
+    --headerBg: {{ section.settings.dropdown_bg_color }};
+    --bgColor: {{ section.settings.dropdown_bg_color }};
+    background: {{ section.settings.dropdown_bg_color }};
+    color: {{ section.settings.dropdown_text_color }};
+}
+
+#headerGridAlt details-menu a,
+#headerGridAlt details-menu button,
+#headerGridAlt details-menu summary {
+    color: {{ section.settings.dropdown_text_color }};
+}
+
+#headerGridAlt details-menu a:hover,
+#headerGridAlt details-menu button:hover {
+    color: {{ section.settings.header_link_hover }};
+}
+
+/* ==========================================================================
+   MOBILE MENU ALTERNATE STYLES
+   ========================================================================== */
+
+@media (width <= 777px) {
+    #mobmenu-alternate {
+        --buttonTransform: none;
+        --bgColor: {{ section.settings.mobile_menu_bg }};
+        --color: {{ section.settings.mobile_menu_text }};
+        --globalBorderColor: {{ section.settings.mobile_menu_border }};
+        --globalBorder: var(--globalBorderWidth) solid {{ section.settings.mobile_menu_border }};
+        --linkColor: {{ section.settings.mobile_menu_text }};
+        --linkHover: {{ section.settings.header_link_hover }};
+
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        border: none;
+        background: {{ section.settings.mobile_menu_bg }};
+        color: {{ section.settings.mobile_menu_text }};
+    }
+
+    #mobmenu-alternate details, 
+    #mobmenu-alternate details-menu { will-change: display; transform: translate3d(0) }
+    #mobmenu-alternate details[open] > summary { font-weight: bold }
+
+    #mobmenu-alternate ul,
+    #mobmenu-alternate li { list-style: none; margin: 0; padding: 0 }
+    #mobmenu-alternate a { display: block; text-align: start }
+
+    #mobmenu-alternate .mob-scroller { display: block }
+    #mobmenu-alternate [menu-list="1"] > li { border-block-end: var(--globalBorder) }
+    #mobmenu-alternate [menu-list] ul { margin-inline-start: var(--padding); border-inline-start: var(--globalBorder) }
+
+    #mobmenu-alternate .mobnav { overflow: auto; background: {{ section.settings.mobile_menu_bg }} }
+
+    #mobmenu-alternate .mobnav .quicks { 
+        gap: var(--globalBorderWidth); 
+    }
+    #mobmenu-alternate .mobnav .quicks > * { outline: var(--globalBorder) }
+
+    #mobmenu-alternate a,
+    #mobmenu-alternate button,
+    #mobmenu-alternate summary,
+    #mobmenu-alternate .headingTitle {
+        color: {{ section.settings.mobile_menu_text }};
+    }
+
+    #mobmenu-alternate a:hover,
+    #mobmenu-alternate button:hover {
+        color: {{ section.settings.header_link_hover }};
+    }
+
+    #mobmenu-alternate svg {
+        color: {{ section.settings.mobile_menu_text }};
+        fill: {{ section.settings.mobile_menu_text }};
+    }
+}
+{% endstyle -%}
+
+<header id="mainHeaderAlt" class="main-header-alternate" boxed-mode="{{ section.settings.boxed_mode }}" data-brand="{{ section.settings.brand_name | handleize }}" {% unless section.settings.global_color_scheme %}color-scheme="{{ section.settings.color_scheme }}"{% endunless %}>
+
+    <x-grid columns="{{ block_count }}"
+        id="headerGridAlt" 
+        show-borders="{{ hasBorder }}"
+        links-outline="{{ outline_links }}" 
+        dropdown-caret="{{ show_dropdown_caret }}" 
+        expand-central="{{ expand_central }}"
+        show-icons="{{ show_icons }}"
+    >
+
+        {%- for block in section.blocks -%}
+        {%- case block.type -%}
+            {%- when 'logo' -%}
+                <x-flex ai="center" jc="{{ block.settings.block_alignment | replace: 'left', 'start' | replace: 'right', 'end' }}" jc-s="center" 
+                    class="bogo" 
+                    style="{{ block.settings.image_size | prepend: '--logoImageSize:' | append: 'px;' }}{% if block.settings.mobile_image_size %}--logoImageSizeMobile:{{ block.settings.mobile_image_size }}px;{% endif %}" 
+                    {{ block.shopify_attributes }}
+                >
+                    <a href="{{ routes.root_url }}">
+                        {%- assign img = block.settings.image -%}
+                        {%- if img -%}
+                            <picture>
+                                {%- if block.settings.mobile_image -%}
+                                    <source media="(max-width: 749px)" srcset="{{ block.settings.mobile_image | image_url: width: 400 }}">
+                                {%- endif -%}
+                                {{ img | image_url: width: 400 | image_tag: class: 'logo', widths: '100,200,400', alt: section.settings.brand_name | default: shop.name | escape }}
+                            </picture>
+                        {%- else -%}
+                            <div class="logo" style="{{ block.settings.font_size | prepend: '--logoSize:' | append: 'px;' }}">
+                                {%- liquid
+                                    if block.settings.name != blank
+                                        echo block.settings.name
+                                    else 
+                                        echo section.settings.brand_name | default: shop.name
+                                    endif 
+                                -%}
+                            </div>
+                        {%- endif -%}
+                    </a>
+                </x-flex>
+
+            {%- when 'menu' -%}
+                {% assign block_alignment = block.settings.block_alignment | replace: 'left', 'start' | replace: 'right', 'end' %}
+                <x-flex ai="center" jc="{{ block_alignment }}" js="{{ block_alignment }}" class="menu fullwidth large-only"
+                    style="{{ block_alignment | prepend: '--_jc:' | append: ';' }}{{ block.settings.dropdown_alignment | prepend: '--_ji:' | append: ';' }}" 
+                    menu-type="{{ block.settings.menu_type }}"
+                    {{ block.shopify_attributes }}
+                >
+                    <nav x-flex wrap="wrap" jc="{{ block_alignment }}" aria-label="{{ 'header.menu' | t }}">
+                        {%- render 'c-menu-item', links: block.settings.menu.links, level: 1, id: 'altMenu', menuType: block.settings.menu_type -%}
+                    </nav>
+                </x-flex>
+
+                {%- comment -%} Hamburger button for mobile {%- endcomment -%}
+                <x-flex class="small-only hamburger">
+                    <button class="is-blank text-normal{% if show_icons %} hasIcon{% endif %}" popovertarget="mobmenu-alternate">
+                        {%- if show_icons -%}
+                            {%- render 'global-icon' with 'menu' -%}
+                            <span class="visually-hidden">{{ 'header.menu' | t }}</span>
+                        {%- else -%}
+                            {{ 'header.menu' | t }}
+                        {%- endif -%}
+                    </button>
+                </x-flex>
+
+                {%- if block.settings.open_on_hover -%}
+                <script>document.addEventListener('DOMContentLoaded', () => {
+                    const header = document.querySelector('#mainHeaderAlt');
+                    if (!header) return;
+                    const menuContainer = header.querySelector('.menu[menu-type]');
+                    const menuType = menuContainer?.getAttribute('menu-type');
+                    const isMega = menuType === 'mega';
+
+                    const menuSelector = isMega ? '.closex.lv1' : '.closex';
+                    const menus = header.querySelectorAll(menuSelector);
+
+                    let velocity = 0, timers = {}, openMenus = {}, switchTimer;
+
+                    const cfg = { velocityThreshold: 0.5, closeFast: 150, closeSlow: 250, openDelay: 150 };
+
+                    const getLevel = el => el.classList.contains('lv1') ? 'lv1' : el.classList.contains('lv2') ? 'lv2' : 'lv3';
+
+                    const getParents = el => {
+                        const parents = [];
+                        let p = el.parentElement;
+                        while (p && p !== header) {
+                        if (p.classList?.contains('closex')) parents.push(getLevel(p));
+                        p = p.parentElement;
+                        }
+                        return parents;
+                    };
+
+                    const clearTimers = (...levels) => levels.forEach(l => clearTimeout(timers[l]));
+
+                    const scheduleClose = (menu, level, delay) => {
+                        clearTimeout(timers[level]);
+                        timers[level] = setTimeout(() => {
+                        menu.removeAttribute('open');
+                        openMenus[level] = null;
+                        if (typeof a11yDetails === 'function') a11yDetails();
+                        }, delay);
+                    };
+
+                    let lastT = Date.now(), lastX = 0, lastY = 0;
+                    header.addEventListener('mousemove', e => {
+                        const dt = Date.now() - lastT;
+                        if (dt > 0) {
+                        const dx = e.clientX - lastX, dy = e.clientY - lastY;
+                        velocity = Math.sqrt(dx * dx + dy * dy) / dt;
+                        }
+                        lastT = Date.now(); lastX = e.clientX; lastY = e.clientY;
+                    });
+
+                    header.addEventListener('mouseleave', () => {
+                        Object.keys(timers).forEach(k => clearTimeout(timers[k]));
+                        timers.global = setTimeout(() => {
+                        menus.forEach(m => m.removeAttribute('open'));
+                        openMenus = {};
+                        if (typeof a11yDetails === 'function') a11yDetails();
+                        }, cfg.closeFast);
+                    });
+
+                    header.addEventListener('mouseenter', () => clearTimeout(timers.global));
+
+                    menus.forEach(menu => {
+                        const level = getLevel(menu);
+                        const isTop = level === 'lv1';
+
+                        menu.addEventListener('mouseenter', () => {
+                        clearTimers('global', 'lv1', 'lv2', 'lv3');
+                        if (switchTimer) clearTimeout(switchTimer);
+
+                        const open = () => {
+                            if (openMenus[level] && openMenus[level] !== menu) {
+                            openMenus[level].removeAttribute('open');
+                            }
+                            menu.setAttribute('open', '');
+                            openMenus[level] = menu;
+                            if (typeof a11yDetails === 'function') a11yDetails();
+                        };
+
+                        (isTop && velocity > cfg.velocityThreshold) || !isTop
+                            ? (switchTimer = setTimeout(open, cfg.openDelay))
+                            : open();
+                        });
+
+                        menu.addEventListener('mouseleave', e => {
+                        if (e.relatedTarget && menu.contains(e.relatedTarget)) return;
+                        scheduleClose(menu, level, cfg.closeFast);
+                        });
+                    });
+
+                    header.querySelectorAll('a:not(summary)').forEach(link => {
+                        link.addEventListener('mouseenter', () => {
+                        const parents = getParents(link);
+                        clearTimers(...parents);
+                        Object.keys(openMenus).forEach(lvl => {
+                            if (!parents.includes(lvl) && openMenus[lvl]) {
+                            scheduleClose(openMenus[lvl], lvl, cfg.closeSlow);
+                            }
+                        });
+                        });
+                    });
+                    });
+                </script>
+                {%- endif -%}
+
+            {%- when 'utility' -%}
+                {% assign block_alignment = block.settings.block_alignment | replace: 'left', 'start' | replace: 'right', 'end' %}
+                <ul x-flex ai="center" jc="{{ block_alignment }}" jc-s="end" class="utility" {{ block.shopify_attributes }}>
+                    {%- render 'header-utility', block: block, show_icons: show_icons, show_cart: show_cart, show_search: show_search -%}
+                </ul>
+
+        {%- endcase -%}
+        {%- endfor -%}
+
+    </x-grid>
+</header>
+
+<script>(() => { 
+    document.body.setAttribute('header-type', '{{ headerPosition }}'); 
+    document.body.setAttribute('header-boxed', '{{ section.settings.boxed_mode }}'); 
+    
+    const updateHeaderVars = () => { 
+        const headerElements = document.querySelectorAll('[class*="group-header"]'); 
+        const header = document.querySelector('#mainHeaderAlt'); 
+        const marquee = document.querySelector('.marquee'); 
+        let headerGroupHeight = 0; 
+        
+        for (const el of headerElements) { 
+            if (el) { 
+                const rect = el.getBoundingClientRect(); 
+                const style = getComputedStyle(el); 
+                const marginTop = parseFloat(style.marginTop) || 0; 
+                const marginBottom = parseFloat(style.marginBottom) || 0; 
+                headerGroupHeight += rect.height + marginTop + marginBottom; 
+            } 
+        } 
+        
+        const getFullHeight = (el) => { 
+            if (!el) return 0; 
+            const rect = el.getBoundingClientRect(); 
+            const style = getComputedStyle(el); 
+            const marginTop = parseFloat(style.marginTop) || 0; 
+            const marginBottom = parseFloat(style.marginBottom) || 0; 
+            return rect.height + marginTop + marginBottom; 
+        }; 
+        
+        const getHeightWithoutMargin = (el) => { 
+            if (!el) return 0; 
+            const rect = el.getBoundingClientRect(); 
+            return rect.height; 
+        }; 
+        
+        document.body.style.setProperty('--headerGroupHeight', `${headerGroupHeight}px`); 
+        document.body.style.setProperty('--headerHeight', `${getHeightWithoutMargin(header)}px`); 
+        document.body.style.setProperty('--headerHeightWM', `${getFullHeight(header)}px`); 
+        document.body.style.setProperty('--marqueeHeight', `${getFullHeight(marquee)}px`); 
+    }; 
+    
+    if (document.fonts?.ready) { 
+        document.fonts.ready.then(updateHeaderVars); 
+    } else { 
+        updateHeaderVars(); 
+    } 
+    
+    let debouncerer; 
+    window.addEventListener('resize', () => { 
+        clearTimeout(debouncerer); 
+        debouncerer = setTimeout(updateHeaderVars, 100);
+    }); 
+})();</script>
+
+{%- liquid
+# Mobile menu - uses alternate menu
+if hasMenu 
+    for block in section.blocks
+        if block.type == 'menu'
+            render 'header-mobile-alternate', links: block.settings.menu.links, accountLinkMob: section.settings.accountLinkMob, language_selector: language_selector, country_selector: country_selector, brand_name: section.settings.brand_name
+        endif
+    endfor
+endif
+
+# Accounts
+if hasUtility
+    if show_search
+        render 'header-search'
+    endif
+
+    if show_cart and template != 'cart'
+        render 'header-cart', location: 'drawer'
+    endif 
+endif
+-%}
+
+{% schema %}
+{
+  "name": "Header - Alternate Brand",
+  "class": "main-header main-header-alternate",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Brand Identity"
+    },
+    {
+      "type": "text",
+      "id": "brand_name",
+      "label": "Brand name",
+      "default": "Secondary Brand"
+    },
+    {
+      "type": "header",
+      "content": "Header Colors"
+    },
+    {
+      "type": "color",
+      "id": "header_bg_color",
+      "label": "Background",
+      "default": "#1a1a2e"
+    },
+    {
+      "type": "color",
+      "id": "header_text_color",
+      "label": "Text / Icons",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "header_link_hover",
+      "label": "Link hover",
+      "default": "#e94560"
+    },
+    {
+      "type": "color",
+      "id": "header_border_color",
+      "label": "Borders",
+      "default": "#2a2a4a"
+    },
+    {
+      "type": "header",
+      "content": "Dropdown Colors"
+    },
+    {
+      "type": "color",
+      "id": "dropdown_bg_color",
+      "label": "Dropdown background",
+      "default": "#16213e"
+    },
+    {
+      "type": "color",
+      "id": "dropdown_text_color",
+      "label": "Dropdown text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Menu Colors"
+    },
+    {
+      "type": "color",
+      "id": "mobile_menu_bg",
+      "label": "Background",
+      "default": "#1a1a2e"
+    },
+    {
+      "type": "color",
+      "id": "mobile_menu_text",
+      "label": "Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "mobile_menu_border",
+      "label": "Borders",
+      "default": "#2a2a4a"
+    },
+    {
+      "type": "header",
+      "content": "Header Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "headerPosition",
+      "label": "Enable sticky header",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "boxed_mode",
+      "label": "Enable boxed mode",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "expand_central",
+      "label": "Expand central column",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dropdown_caret",
+      "label": "Show dropdown caret",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_borders",
+      "label": "Show borders",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "outline_links",
+      "label": "Show link outline - hover",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_icons",
+      "label": "Show icons",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "accountLinkMob",
+      "label": "Show user accounts - mobile",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Home page header overlay"
+    },
+    {
+      "type": "checkbox",
+      "id": "homeOverlay",
+      "label": "Overlay header",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "bgFill",
+      "label": "Background type",
+      "visible_if": "{{ section.settings.homeOverlay }}",
+      "default": "transparent",
+      "options": [
+        { "value": "solid", "label": "Solid" },
+        { "value": "translucent", "label": "Translucent" },
+        { "value": "transparent", "label": "Transparent" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Appearance"
+    },
+    {
+      "type": "checkbox",
+      "id": "global_color_scheme",
+      "label": "Use global color scheme",
+      "default": false,
+      "info": "Turn off to use the custom colors above"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "coretex-1",
+      "visible_if": "{{ section.settings.global_color_scheme }}"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Desktop Logo"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "range",
+          "id": "image_size",
+          "min": 20,
+          "max": 120,
+          "step": 5,
+          "unit": "px",
+          "label": "Size",
+          "default": 20
+        },
+        {
+          "type": "header",
+          "content": "Mobile Logo"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile image",
+          "info": "Optional. Falls back to desktop logo if not set."
+        },
+        {
+          "type": "range",
+          "id": "mobile_image_size",
+          "min": 20,
+          "max": 100,
+          "step": 5,
+          "unit": "px",
+          "label": "Mobile size",
+          "default": 20
+        },
+        {
+          "type": "header",
+          "content": "Text Logo",
+          "info": "Used if no image is selected"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Text"
+        },
+        {
+          "type": "font_picker",
+          "label": "Font",
+          "id": "logo_font",
+          "default": "inter_n4"
+        },
+        {
+          "type": "range",
+          "id": "font_size",
+          "min": 10,
+          "max": 30,
+          "step": 1,
+          "unit": "px",
+          "label": "Size",
+          "default": 15
+        },
+        {
+          "type": "header",
+          "content": "Alignment"
+        },
+        {
+          "type": "text_alignment",
+          "id": "block_alignment",
+          "label": "Block",
+          "default": "left"
+        }
+      ]
+    },
+    {
+      "type": "menu",
+      "name": "Primary menu",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu",
+          "default": "main-menu",
+          "info": "Select or create a menu for this brand"
+        },
+        {
+          "type": "select",
+          "id": "menu_type",
+          "label": "Menu type - desktop",
+          "default": "dropdown",
+          "options": [
+            { "value": "dropdown", "label": "Dropdown" },
+            { "value": "dropdown-compact", "label": "Dropdown - compact" },
+            { "value": "mega", "label": "Mega" }
+          ]
+        },
+        {
+          "type": "checkbox",
+          "id": "open_on_hover",
+          "label": "Open on hover - desktop",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Alignment"
+        },
+        {
+          "type": "text_alignment",
+          "id": "block_alignment",
+          "label": "Block",
+          "default": "center"
+        },
+        {
+          "type": "text_alignment",
+          "id": "dropdown_alignment",
+          "label": "Text alignment",
+          "default": "left"
+        }
+      ]
+    },
+    {
+      "type": "utility",
+      "name": "Secondary menu",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_cart",
+          "label": "Show cart",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_search",
+          "label": "Show search",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "accountLink",
+          "label": "Show customer account",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_language",
+          "label": "Language selector",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "show_country",
+          "label": "Country/region selector",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Alignment"
+        },
+        {
+          "type": "text_alignment",
+          "id": "block_alignment",
+          "label": "Block",
+          "default": "right"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "logo" },
+      { "type": "menu" },
+      { "type": "utility" }
+    ]
+  }
+}
+{% endschema %}

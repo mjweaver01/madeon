@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}" dir="{% render 'inc-dir' %}" class="no-js">
+<head>
+  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+    {%- render 'global-meta' -%}
+    <script>document.documentElement.className = 'js';</script>
+
+    {%- # Preload assets -%}
+    {%- render 'global-preload' -%}
+
+    {%- if settings.favicon != blank -%}
+    <link rel="shortcut icon" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    <link rel="apple-touch-icon-precomposed" href="{{ settings.favicon | image_url: width: 250, height: 250 }}">
+    {%- endif -%}
+
+    <!-- BEGIN content_for_header -->
+    {{ content_for_header }}
+    <!-- END content_for_header -->
+
+    {%- liquid
+        echo 'skelet.css' | asset_url | stylesheet_tag: preload: true
+
+        render 'global-css'
+
+        if settings.useCustomFont
+            render 'global-fonts'
+        endif 
+
+        echo 'app.css' | asset_url | stylesheet_tag
+    -%}
+
+    {%- # theme-check-disable -%}
+    {%- if settings.css != blank -%}<style id="bUserCSS">{{ settings.css }}</style>{%- endif -%}
+    {%- # theme-check-enable -%}
+
+    <!-- ADDITIONAL CODE INJECTED BY SHOPIFY -->
+    {% # Shopify injects tracking + other code here before the closing of the head tag. %}
+    <meta name="robots" content="noindex">
+    <!-- Start AEG Pixel Snippet -->
+<script>
+!function(e,t,n,a,i,l,o,s,r){e[i]||(o=e[i]=function
+(){o.process?o.process.apply(o,arguments):o.queue.p
+ush(arguments)},o.queue=[],o.t=1*new
+Date,s=t.createElement(n),s.async=1,s.src=a+"?t="+M
+ath.ceil(new
+Date/l)*l,r=t.getElementsByTagName(n)[0],r.parentNo
+de.insertBefore(s,r))}(window,document,"script","//
+tracking.aegpresents.com/universalpixel/universalpi
+xel.js","kl",864e5),kl("event","pageload");
+</script>
+<!-- End AEG Pixel Snippet -->
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '914031909160214');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=914031909160214&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+</head>
+<body 
+    class="{{ settings.a11yFocusStyles }}" 
+    layout-boxed="{{ settings.boxedLayout }}" 
+    coretex-page="{{ template.name }}"
+    coretex-path="{{ request.path }}"
+>
+    <a href="#mainContent" class="skip-to-content button is-primary visually-hidden">{{ "general.accessibility.skip_to_text" | t }}</a>
+    <component-loader id="app">
+        {%- comment -%} Only show global header on non-victory-band templates {%- endcomment -%}
+        {%- unless template.suffix contains 'victory-band' -%}
+            {%- sections 'group-header' -%}
+        {%- endunless -%}
+
+        <main id="mainContent">
+            {%- render 'global-breadcrumbs' -%}
+            {{ content_for_layout }}
+        </main>
+
+        {%- liquid
+            # Only show global footer on non-victory-band templates
+            unless template.suffix contains 'victory-band'
+                sections 'group-footer'
+            endunless
+
+            sections 'group-overlay'
+        -%}
+    </component-loader>
+
+    {%- liquid
+        # Loading the Language dialog
+        if localization.available_languages.size > 1
+            render 'global-localization', type: 'language'
+        endif 
+
+        # Loading the Country/region dialog
+        if localization.available_countries.size > 1
+            render 'global-localization', type: 'country'
+        endif
+
+        render 'global-js'
+    -%}
+
+</body>
+</html>

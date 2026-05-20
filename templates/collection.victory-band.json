@@ -1,0 +1,356 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "header-alternate": {
+      "type": "header-alternate",
+      "blocks": {
+        "menu": {
+          "type": "menu",
+          "settings": {
+            "menu": "main-menu",
+            "menu_type": "dropdown",
+            "open_on_hover": false,
+            "block_alignment": "left",
+            "dropdown_alignment": "left"
+          }
+        },
+        "logo": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/metal_logo2.png",
+            "image_size": 95,
+            "mobile_image_size": 20,
+            "name": "",
+            "logo_font": "inter_n4",
+            "font_size": 15,
+            "block_alignment": "center"
+          }
+        },
+        "utility": {
+          "type": "utility",
+          "settings": {
+            "show_cart": true,
+            "show_search": false,
+            "accountLink": true,
+            "show_language": false,
+            "show_country": false,
+            "block_alignment": "right"
+          }
+        }
+      },
+      "block_order": [
+        "menu",
+        "logo",
+        "utility"
+      ],
+      "custom_css": [
+        "a {text-transform: uppercase; font-size: 13px; letter-spacing: 0.75px;}"
+      ],
+      "settings": {
+        "brand_name": "Victory Band",
+        "header_bg_color": "#000000",
+        "header_text_color": "#ffffff",
+        "header_link_hover": "#ffffff",
+        "header_border_color": "#000000",
+        "dropdown_bg_color": "#ffffff",
+        "dropdown_text_color": "#ffffff",
+        "mobile_menu_bg": "#1a1a2e",
+        "mobile_menu_text": "#ffffff",
+        "mobile_menu_border": "#2a2a4a",
+        "headerPosition": true,
+        "boxed_mode": false,
+        "expand_central": false,
+        "show_dropdown_caret": true,
+        "show_borders": true,
+        "outline_links": true,
+        "show_icons": false,
+        "accountLinkMob": true,
+        "homeOverlay": false,
+        "bgFill": "solid",
+        "global_color_scheme": false,
+        "color_scheme": ""
+      }
+    },
+    "gs_hero_NJ9aQx": {
+      "type": "gs-hero",
+      "name": "Hero banner",
+      "settings": {
+        "mediaType": "image",
+        "image": "shopify://shop_images/mdn-victory-hero.jpg",
+        "imgClickable": false,
+        "videoLoop": true,
+        "videoMute": true,
+        "videoAutoplay": true,
+        "clickToPlay": true,
+        "playPause": true,
+        "cropVideo": false,
+        "heroHeight": "uncropped",
+        "heroHeightMobile": "default",
+        "title": "",
+        "headingTag": "h2",
+        "content": "",
+        "cta": "",
+        "url": "",
+        "contentPosition": "center between",
+        "contentDirection": "row",
+        "textAlignment": "left",
+        "contentPositionMob": "center between",
+        "contentDirectionMob": "column",
+        "textAlignmentMob": "center",
+        "heroMetaH1hasBg": false,
+        "global_color_scheme": true,
+        "color_scheme": ""
+      }
+    },
+    "gs_marquee_jXJb7y": {
+      "type": "gs-marquee",
+      "custom_css": [
+        "section.marquee {padding-top: 20px; padding-bottom: 20px;}"
+      ],
+      "name": "Scrolling text",
+      "settings": {
+        "marqueeText": "VICTORY COLLECTION",
+        "image": "shopify://shop_images/STAR_RING_posterize.png",
+        "marqueeLink": "",
+        "marqueeDirection": "false",
+        "marqueeSpeeds": 40,
+        "marqueePause": true,
+        "font_size": 3,
+        "font_size_mob": 3,
+        "global_color_scheme": false,
+        "color_scheme": "coretex-2"
+      }
+    },
+    "main": {
+      "type": "t-collection",
+      "disabled": true,
+      "settings": {
+        "showFeatImg": true,
+        "showDescription": true,
+        "showFilters": true,
+        "filtersDetached": true,
+        "collection_list": [],
+        "show_product_counts": false,
+        "show_category_image": false,
+        "related_collections": false,
+        "related_collections_show_product_counts": false,
+        "related_collections_show_category_image": false,
+        "suggestedLinklist": "footer",
+        "quickTags": false,
+        "pagination": "scroll",
+        "prodXpage": 9,
+        "global_color_scheme": true,
+        "color_scheme": ""
+      }
+    },
+    "gs_marquee_7Lbgtr": {
+      "type": "gs-marquee",
+      "disabled": true,
+      "name": "Scrolling text",
+      "settings": {
+        "marqueeText": "Victory Collection",
+        "image": "shopify://shop_images/MINIDOLLS.png",
+        "marqueeLink": "",
+        "marqueeDirection": "false",
+        "marqueeSpeeds": 40,
+        "marqueePause": true,
+        "font_size": 5,
+        "font_size_mob": 3,
+        "global_color_scheme": false,
+        "color_scheme": "coretex-2"
+      }
+    },
+    "gs_featured_collection_gA4MtH": {
+      "type": "gs-featured-collection",
+      "custom_css": [
+        "h2.h4 {font-size: 16px !important;}"
+      ],
+      "name": "Featured collection",
+      "settings": {
+        "homeCollection": "vctry-landing",
+        "show_heading": false,
+        "howmany": 4,
+        "horizontalScroller": "desk",
+        "global_color_scheme": false,
+        "color_scheme": "coretex-2"
+      }
+    },
+    "gs_hero_ARiwcP": {
+      "type": "gs-hero",
+      "custom_css": [
+        "h1 {font-size: 30px; letter-spacing: 1px;}",
+        ".button {font-size: 13px; letter-spacing: 0.5px; font-weight: 500; padding: 12px 25px;}"
+      ],
+      "name": "Hero banner",
+      "settings": {
+        "mediaType": "video",
+        "imgClickable": false,
+        "video": "shopify://files/videos/mdn-test.mov",
+        "videoLoop": true,
+        "videoMute": true,
+        "videoAutoplay": true,
+        "clickToPlay": true,
+        "playPause": true,
+        "cropVideo": false,
+        "heroHeight": "var(--heroHeight-m)",
+        "heroHeightMobile": "default",
+        "title": "Hero heading",
+        "headingTag": "h1",
+        "content": "",
+        "cta": "Shop more",
+        "url": "",
+        "contentPosition": "bottom center",
+        "contentDirection": "column",
+        "textAlignment": "center",
+        "contentPositionMob": "center between",
+        "contentDirectionMob": "column",
+        "textAlignmentMob": "center",
+        "heroMetaH1hasBg": false,
+        "global_color_scheme": false,
+        "color_scheme": "coretex-2"
+      }
+    },
+    "gs_hero_C8yhaF": {
+      "type": "gs-hero",
+      "name": "Hero banner",
+      "settings": {
+        "mediaType": "image",
+        "image": "shopify://shop_images/MINIDOLLS.png",
+        "imgClickable": false,
+        "videoLoop": true,
+        "videoMute": true,
+        "videoAutoplay": true,
+        "clickToPlay": true,
+        "playPause": true,
+        "cropVideo": false,
+        "heroHeight": "var(--heroHeight-s)",
+        "heroHeightMobile": "default",
+        "title": "",
+        "headingTag": "h2",
+        "content": "",
+        "cta": "",
+        "url": "",
+        "contentPosition": "center between",
+        "contentDirection": "row",
+        "textAlignment": "left",
+        "contentPositionMob": "center between",
+        "contentDirectionMob": "column",
+        "textAlignmentMob": "center",
+        "heroMetaH1hasBg": false,
+        "global_color_scheme": false,
+        "color_scheme": "coretex-2"
+      }
+    },
+    "footer-alternate": {
+      "type": "footer-alternate",
+      "blocks": {
+        "menu": {
+          "type": "menu",
+          "settings": {
+            "menu": "main-menu",
+            "fullwidth": false,
+            "multicolumn": true,
+            "show_nested": true,
+            "alignment_desktop": "left",
+            "alignment_mobile": "left"
+          }
+        },
+        "socials": {
+          "type": "socials",
+          "settings": {
+            "enable_follow_on_shop": false,
+            "fullwidth": false,
+            "alignment_desktop": "left",
+            "alignment_mobile": "center"
+          }
+        },
+        "menu_EyXnQd": {
+          "type": "menu",
+          "disabled": true,
+          "settings": {
+            "menu": "footer",
+            "fullwidth": false,
+            "multicolumn": true,
+            "show_nested": false,
+            "alignment_desktop": "right",
+            "alignment_mobile": "left"
+          }
+        },
+        "newsletter_DeKCRb": {
+          "type": "newsletter",
+          "settings": {
+            "footerNewsletterTitle": "",
+            "fullwidth": false
+          }
+        },
+        "copyright": {
+          "type": "copyright",
+          "disabled": true,
+          "settings": {
+            "copyright_text": "All rights reserved.",
+            "fullwidth": true,
+            "alignment_desktop": "center",
+            "alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "menu",
+        "socials",
+        "menu_EyXnQd",
+        "newsletter_DeKCRb",
+        "copyright"
+      ],
+      "custom_css": [],
+      "settings": {
+        "brand_name": "Victory Band",
+        "footer_bg_color": "#000000",
+        "footer_text_color": "#a0a0a0",
+        "footer_heading_color": "#ffffff",
+        "footer_link_color": "#d0d0d0",
+        "footer_link_hover": "#ffffff",
+        "footer_border_color": "#efeeec",
+        "newsletter_input_bg": "#353539",
+        "newsletter_input_text": "#ffffff",
+        "newsletter_button_bg": "#ffffff",
+        "newsletter_button_text": "#000000"
+      }
+    },
+    "gs_hero_logo_XMtEKh": {
+      "type": "gs-hero-logo",
+      "name": "Hero logo",
+      "settings": {
+        "image": "shopify://shop_images/VICTORY_LOGO_new.png",
+        "logoSVG": "",
+        "url": "",
+        "size": 45,
+        "size_s": 40,
+        "alignment": "center",
+        "paddingStart": 0,
+        "paddingEnd": 0,
+        "global_color_scheme": false,
+        "color_scheme": "coretex-2"
+      }
+    }
+  },
+  "order": [
+    "header-alternate",
+    "gs_hero_NJ9aQx",
+    "gs_marquee_jXJb7y",
+    "main",
+    "gs_marquee_7Lbgtr",
+    "gs_featured_collection_gA4MtH",
+    "gs_hero_ARiwcP",
+    "gs_hero_C8yhaF",
+    "footer-alternate",
+    "gs_hero_logo_XMtEKh"
+  ]
+}

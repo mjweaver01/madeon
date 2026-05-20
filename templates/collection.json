@@ -1,0 +1,79 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "gs_hero_JHmUNf": {
+      "type": "gs-hero",
+      "custom_css": [
+        "h1 {font-size: 30px; letter-spacing: 1px;}",
+        ".button {font-size: 13px; letter-spacing: 0.5px; font-weight: 500; padding: 12px 15px;}"
+      ],
+      "name": "Hero banner",
+      "settings": {
+        "mediaType": "image",
+        "image": "shopify://shop_images/HERO_2.jpg",
+        "imageMobile": "shopify://shop_images/HERO_2_mobile.jpg",
+        "imgClickable": false,
+        "video": "shopify://files/videos/mdn-test.mov",
+        "videoLoop": true,
+        "videoMute": true,
+        "videoAutoplay": true,
+        "clickToPlay": true,
+        "playPause": true,
+        "cropVideo": false,
+        "heroHeight": "uncropped",
+        "heroHeightMobile": "var(--heroHeight-m)",
+        "title": "",
+        "headingTag": "h1",
+        "content": "",
+        "cta": "",
+        "url": "",
+        "contentPosition": "bottom center",
+        "contentDirection": "column",
+        "textAlignment": "center",
+        "contentPositionMob": "bottom center",
+        "contentDirectionMob": "column",
+        "textAlignmentMob": "center",
+        "heroMetaH1hasBg": false,
+        "global_color_scheme": false,
+        "color_scheme": "coretex-2"
+      }
+    },
+    "main": {
+      "type": "t-collection",
+      "custom_css": [
+        "h2.h4 {font-size: 16px !important;}",
+        ".product-grid product-card .media picture {background-color: black;}"
+      ],
+      "settings": {
+        "showFeatImg": false,
+        "showDescription": false,
+        "showFilters": true,
+        "filtersDetached": true,
+        "collection_list": [],
+        "show_product_counts": false,
+        "show_category_image": false,
+        "related_collections": false,
+        "related_collections_show_product_counts": false,
+        "related_collections_show_category_image": false,
+        "suggestedLinklist": "",
+        "quickTags": false,
+        "pagination": "scroll",
+        "prodXpage": 9,
+        "global_color_scheme": true,
+        "color_scheme": ""
+      }
+    }
+  },
+  "order": [
+    "gs_hero_JHmUNf",
+    "main"
+  ]
+}

@@ -1,0 +1,270 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "t-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "hidePriceSold": false,
+            "show_sale": true,
+            "sale_badge_style": "label-percentage",
+            "sale_badge_direction": "column",
+            "sale_badge_order": "3",
+            "sale_badge_bold": true
+          }
+        },
+        "separator_86pQzk": {
+          "type": "separator",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "table_grid": false,
+            "swatch_shape": "none",
+            "show_text": false,
+            "size_chart": "{{ product.metafields.custom.size_chart.value }}"
+          }
+        },
+        "product_list_8yBNBK": {
+          "type": "product_list",
+          "disabled": true,
+          "settings": {
+            "heading": "Victory Preorders",
+            "product_list": [
+              "bundle-1",
+              "jacket",
+              "poster"
+            ],
+            "swatch_shape": "square",
+            "swatch_crop": "cover"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "floatButtonShow": true,
+            "floatButtonShowPrice": true,
+            "show_dynamic_checkout": false,
+            "show_addtocart_as_primary": false,
+            "show_pickup_availability": false,
+            "show_gift_card_recipient": false,
+            "button_bg": "#000000",
+            "button_color": "#ffffff",
+            "button_border": "rgba(0,0,0,0)"
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "collapsible_desc": true,
+            "heading": "Description",
+            "checked": true,
+            "folder": false
+          }
+        },
+        "share": {
+          "type": "share",
+          "disabled": true,
+          "settings": {
+            "heading": ""
+          }
+        },
+        "collapsible_tab": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "heading": "{{ product.metafields.custom.pdp_tab_heading.value }}",
+            "checked": false,
+            "content": "<p>{{ product.metafields.custom.product_specs | metafield_tag }}</p>",
+            "page": "",
+            "liquid": ""
+          }
+        },
+        "collapsible_tab_tgc6KR": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "heading": "{{ product.metafields.custom.pdp_tab_heading.value }}",
+            "checked": true,
+            "content": "{{ product.metafields.custom.product_specs | metafield_tag }}",
+            "page": "",
+            "liquid": ""
+          }
+        },
+        "collapsible_tab_VjVaAa": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "heading": "Product Care",
+            "checked": true,
+            "content": "",
+            "page": "",
+            "liquid": ""
+          }
+        },
+        "collapsible_tab_66XKPm": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "heading": "Return Policy",
+            "checked": true,
+            "content": "",
+            "page": "",
+            "liquid": ""
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "separator_86pQzk",
+        "variant_picker",
+        "product_list_8yBNBK",
+        "buy_buttons",
+        "description",
+        "share",
+        "collapsible_tab",
+        "collapsible_tab_tgc6KR",
+        "collapsible_tab_VjVaAa",
+        "collapsible_tab_66XKPm"
+      ],
+      "custom_css": [
+        ".cartButton.is-primary {padding: 20px; font-weight: 400; letter-spacing: 1px; margin-bottom: 15px;}",
+        "h1 {font-size: 24px !important; letter-spacing: 1px;}",
+        ".cartButton.is-primary {padding: 20px; font-weight: 400; letter-spacing: 1px;}",
+        ".form__label {font-weight: 400;}",
+        "h1 {font-size: 24px !important; letter-spacing: 1px;}",
+        "button.sizechart {text-decoration: underline;}"
+      ],
+      "settings": {
+        "pinSection": "content",
+        "mobileTitle": false,
+        "mediaColumnWidth": "normal",
+        "mediaColumnHeight": false,
+        "mediaPosition": "3",
+        "mediaLayout": "row1",
+        "mediaLayoutMob": "slider",
+        "showThumbnailSlider": true,
+        "showSlideCounter": false,
+        "imageZoom": true,
+        "hideVariants": false,
+        "enable_video_autoplay": false,
+        "enable_video_looping": false,
+        "enable_video_controls": false,
+        "show_media_info": false,
+        "media_info": "Add model details, sizing info, or other notes here.",
+        "media_info_alignment": "left",
+        "media_info_bg": false,
+        "global_color_scheme": true,
+        "color_scheme": "",
+        "dialogPosition": "center",
+        "dialog_global_color_scheme": true,
+        "dialog_color_scheme": ""
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "custom_css": [
+        "h2.h4 {font-size: 16px !important;}",
+        ".product-grid product-card .media picture {background-color: black;}"
+      ],
+      "settings": {
+        "numberOfProds": 3,
+        "horizontalScroller": "mob",
+        "global_color_scheme": true,
+        "color_scheme": ""
+      }
+    },
+    "s_liquid_EVWYbJ": {
+      "type": "s-liquid",
+      "disabled": true,
+      "name": "Custom Liquid",
+      "settings": {
+        "liquid": "<div class=\"loadmore\"><a href=\"/collections/victory-pre-orders\" class=\"no-style\">SHOP ALL {{ product.vendor }}</a></div>",
+        "global_color_scheme": true,
+        "color_scheme": ""
+      }
+    },
+    "gs_hero_3PfPGc": {
+      "type": "gs-hero",
+      "disabled": true,
+      "name": "Hero banner",
+      "settings": {
+        "mediaType": "image",
+        "imgClickable": false,
+        "videoLoop": true,
+        "videoMute": true,
+        "videoAutoplay": true,
+        "clickToPlay": true,
+        "playPause": true,
+        "cropVideo": false,
+        "heroHeight": "var(--heroHeight-f)",
+        "heroHeightMobile": "default",
+        "title": "",
+        "headingTag": "h2",
+        "content": "",
+        "cta": "",
+        "url": "",
+        "contentPosition": "center between",
+        "contentDirection": "row",
+        "textAlignment": "left",
+        "contentPositionMob": "center between",
+        "contentDirectionMob": "column",
+        "textAlignmentMob": "center",
+        "heroMetaH1hasBg": false,
+        "global_color_scheme": true,
+        "color_scheme": ""
+      }
+    },
+    "gs_featured_collection_FpUAN8": {
+      "type": "gs-featured-collection",
+      "disabled": true,
+      "name": "Featured collection",
+      "settings": {
+        "homeCollection": "frontpage",
+        "show_heading": true,
+        "howmany": 3,
+        "horizontalScroller": "none",
+        "global_color_scheme": true,
+        "color_scheme": ""
+      }
+    },
+    "gs_featured_collection_HMNV3F": {
+      "type": "gs-featured-collection",
+      "disabled": true,
+      "name": "Featured collection",
+      "settings": {
+        "homeCollection": "frontpage",
+        "show_heading": true,
+        "howmany": 3,
+        "horizontalScroller": "none",
+        "global_color_scheme": true,
+        "color_scheme": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "product-recommendations",
+    "s_liquid_EVWYbJ",
+    "gs_hero_3PfPGc",
+    "gs_featured_collection_FpUAN8",
+    "gs_featured_collection_HMNV3F"
+  ]
+}

@@ -1,0 +1,114 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "footer-backtop": {
+      "type": "footer-backtop",
+      "settings": {
+        "global_color_scheme": false,
+        "color_scheme": "coretex-1"
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "menu_Wnq8A8": {
+          "type": "menu",
+          "settings": {
+            "menu": "4-30-main-menu-new",
+            "fullwidth": false,
+            "multicolumn": false,
+            "show_nested": false,
+            "alignment_desktop": "left",
+            "alignment_mobile": "center"
+          }
+        },
+        "legal_links_qkFLed": {
+          "type": "legalLinks",
+          "settings": {
+            "legalMenu": "",
+            "fullwidth": false,
+            "multicolumn": false,
+            "alignment_desktop": "left",
+            "alignment_mobile": "left"
+          }
+        },
+        "socials": {
+          "type": "socials",
+          "settings": {
+            "enable_follow_on_shop": false,
+            "fullwidth": false,
+            "alignment_desktop": "center",
+            "alignment_mobile": "center"
+          }
+        },
+        "newsletter": {
+          "type": "newsletter",
+          "settings": {
+            "footerNewsletterTitle": "",
+            "fullwidth": false
+          }
+        }
+      },
+      "block_order": [
+        "menu_Wnq8A8",
+        "legal_links_qkFLed",
+        "socials",
+        "newsletter"
+      ],
+      "custom_css": [
+        "a {text-transform: uppercase; font-size: 13px;}"
+      ],
+      "settings": {
+        "global_color_scheme": false,
+        "color_scheme": "scheme-b5d18686-5f4f-4299-88ef-353915541c47"
+      }
+    },
+    "sub-footer": {
+      "type": "footer-bottom",
+      "blocks": {
+        "credits_6LA764": {
+          "type": "credits",
+          "settings": {
+            "text_alignment": "left",
+            "fullwidth": false
+          }
+        },
+        "copyright_UKtWWd": {
+          "type": "copyright",
+          "settings": {
+            "copyright": "",
+            "text_alignment": "right",
+            "fullwidth": false
+          }
+        }
+      },
+      "block_order": [
+        "credits_6LA764",
+        "copyright_UKtWWd"
+      ],
+      "custom_css": [
+        "span.am {margin-left: 5px;}",
+        "a.no-style {text-transform:capitalize;}"
+      ],
+      "settings": {
+        "global_color_scheme": true,
+        "color_scheme": ""
+      }
+    }
+  },
+  "order": [
+    "footer-backtop",
+    "footer",
+    "sub-footer"
+  ]
+}

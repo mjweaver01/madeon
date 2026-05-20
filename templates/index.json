@@ -1,0 +1,327 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "gs_hero_z9BKMH": {
+      "type": "gs-hero",
+      "custom_css": [
+        "h1 {font-size: 30px; letter-spacing: 1px;}",
+        ".button {font-size: 13px; letter-spacing: 0.5px; font-weight: 500; padding: 12px 15px;}"
+      ],
+      "name": "Hero banner",
+      "settings": {
+        "mediaType": "image",
+        "image": "shopify://shop_images/HERO_2.jpg",
+        "imageMobile": "shopify://shop_images/HERO_2_mobile.jpg",
+        "imgClickable": false,
+        "video": "shopify://files/videos/mdn-test.mov",
+        "videoLoop": true,
+        "videoMute": true,
+        "videoAutoplay": true,
+        "clickToPlay": true,
+        "playPause": true,
+        "cropVideo": false,
+        "heroHeight": "uncropped",
+        "heroHeightMobile": "var(--heroHeight-m)",
+        "title": "Victory",
+        "headingTag": "h1",
+        "content": "",
+        "cta": "SHOP NOW",
+        "url": "shopify://collections/victory-pre-orders",
+        "contentPosition": "bottom center",
+        "contentDirection": "column",
+        "textAlignment": "center",
+        "contentPositionMob": "bottom center",
+        "contentDirectionMob": "column",
+        "textAlignmentMob": "center",
+        "heroMetaH1hasBg": false,
+        "global_color_scheme": false,
+        "color_scheme": "coretex-2"
+      }
+    },
+    "gs_marquee_nNYf3K": {
+      "type": "gs-marquee",
+      "custom_css": [
+        "section.marquee {padding-top: 20px; padding-bottom: 20px;}"
+      ],
+      "name": "Scrolling text",
+      "settings": {
+        "marqueeText": "VICTORY AVAILABLE 06.26.2026 | PREORDER NOW",
+        "image": "shopify://shop_images/BANDAID_ASSET_7371e63c-106e-4400-91cd-21ab4d8ee798.png",
+        "marqueeLink": "",
+        "marqueeDirection": "false",
+        "marqueeSpeeds": 40,
+        "marqueePause": true,
+        "font_size": 3,
+        "font_size_mob": 3,
+        "global_color_scheme": true,
+        "color_scheme": "coretex-1"
+      }
+    },
+    "gs_featured_collection_WB4aiH": {
+      "type": "gs-featured-collection",
+      "custom_css": [
+        "h2.h4 {font-size: 16px !important;}",
+        ".product-grid product-card .media picture {background-color: black;}",
+        "div.loadmore {display: none;}"
+      ],
+      "name": "Featured collection",
+      "settings": {
+        "homeCollection": "victory-pre-orders",
+        "show_heading": false,
+        "howmany": 6,
+        "horizontalScroller": "none",
+        "global_color_scheme": false,
+        "color_scheme": ""
+      }
+    },
+    "s_liquid_Vnpxij": {
+      "type": "s-liquid",
+      "name": "Custom Liquid",
+      "settings": {
+        "liquid": "<div class=\"loadmore\"><a href=\"/collections/victory-pre-orders\" class=\"no-style\">SHOP ALL VICTORY PRE-ORDERS</a></div>",
+        "global_color_scheme": false,
+        "color_scheme": "coretex-2"
+      }
+    },
+    "gs_featured_products_bVFLHK": {
+      "type": "gs-featured-products",
+      "disabled": true,
+      "name": "Featured products",
+      "settings": {
+        "heading": "",
+        "url": "",
+        "product_list": [],
+        "horizontalScroller": "none",
+        "global_color_scheme": true,
+        "color_scheme": "coretex-1"
+      }
+    },
+    "gs_media_text_XbfqmW": {
+      "type": "gs-media-text",
+      "blocks": {
+        "custom_liquid_FDjR9V": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "<img src=\"https://cdn.shopify.com/s/files/1/0984/6266/2958/files/STAR_RING_posterize.png?v=1775242992\" class=\"star\">"
+          }
+        },
+        "heading_LiHbyV": {
+          "type": "heading",
+          "settings": {
+            "heading": "stream fire away"
+          }
+        },
+        "custom_liquid_VyWhwd": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div class=\"stream\">\n<iframe data-testid=\"embed-iframe\" style=\"border-radius:0px\" src=\"https://open.spotify.com/embed/album/5VlCkNwFOLe5b9bWEcRiUS?utm_source=generator&theme=0\" width=\"100%\" height=\"352\" frameBorder=\"0\" allowfullscreen=\"\" allow=\"autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture\" loading=\"lazy\"></iframe>\n</div>"
+          }
+        },
+        "button_mf8z8U": {
+          "type": "button",
+          "settings": {
+            "button_label": "PRE-SAVE VICTORY",
+            "button_link": "https://madeon.lnk.to/victoryalbum"
+          }
+        },
+        "custom_liquid_DwDeNr": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "<div class=\"stream\">\n<!-- Streaming / Listen Now Section -->\n<div class=\"section-content\">\n\n  <div class=\"icon-list icon-list--horizontal\">\n\n    <!-- Spotify -->\n    <a href=\"https://open.spotify.com/artist/4pb4rqWSoGUgxm63xmJ8xc\" class=\"icon-list__item\" aria-label=\"Listen on Spotify\">\n      <div class=\"icon-list__icon\">\n        <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" width=\"30\" height=\"30\">\n          <path d=\"M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.441 17.295a.75.75 0 01-1.032.244c-2.827-1.728-6.385-2.118-10.574-1.16a.75.75 0 01-.334-1.463c4.585-1.047 8.517-.596 11.696 1.347a.75.75 0 01.244 1.032zm1.452-3.23a.938.938 0 01-1.29.308c-3.234-1.988-8.163-2.563-11.986-1.402a.938.938 0 01-.543-1.794c4.37-1.325 9.8-.682 13.51 1.598a.938.938 0 01.309 1.29zm.125-3.362C15.24 8.39 8.8 8.17 5.232 9.259a1.125 1.125 0 11-.653-2.154c4.121-1.25 10.979-1.008 15.315 1.587a1.125 1.125 0 01-1.076 1.982v.009z\"/>\n        </svg>\n      </div>\n    </a>\n\n    <!-- Apple Music -->\n    <a href=\"https://music.apple.com/us/artist/madeon/371199302\" class=\"icon-list__item\" aria-label=\"Listen on Apple Music\">\n      <div class=\"icon-list__icon\">\n        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"30\" height=\"30\" fill=\"currentColor\" viewBox=\"0 0 16 16\">\n          <path d=\"M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516s1.52.087 2.475-1.258.762-2.391.728-2.43zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422s1.675-2.789 1.698-2.854-.597-.79-1.254-1.157a3.7 3.7 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899s1.219.386 1.843.067c.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-3.196.129-.329.81-2.05.69-2.51z\"/>\n        </svg>\n      </div>\n    </a>\n\n   \n    <!-- YouTube -->\n    <a href=\"https://www.youtube.com/channel/UCqMDNf3Pn5L7pcNkuSEeO3w\" class=\"icon-list__item\" aria-label=\"Listen on YouTube\">\n      <div class=\"icon-list__icon\">\n        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"30\" height=\"30\" fill=\"currentColor\" viewBox=\"0 0 16 16\">\n          <path d=\"M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z\"/>\n        </svg>\n      </div>\n    </a>\n\n    <!-- SoundCloud -->\n    <a href=\"https://soundcloud.com/madeon\" class=\"icon-list__item\" aria-label=\"Listen on SoundCloud\">\n      <div class=\"icon-list__icon\">\n        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"30\" height=\"30\" fill=\"currentColor\" viewBox=\"0 0 24 24\">\n          <path d=\"M7 17.939h-1v-8.068c.308-.231.639-.429 1-.566v8.634zm3 0h1v-9.224c-.229.265-.443.548-.621.857l-.379-.184v8.551zm-2 0h1v-8.848c-.508-.079-.623-.05-1-.01v8.858zm-4 0h1v-7.02c-.312.458-.555.971-.692 1.535l-.308-.182v5.667zm-3-5.25c-.606.547-1 1.354-1 2.268 0 .914.394 1.721 1 2.268v-4.536zm18.879-.671c-.204-2.837-2.404-5.079-5.117-5.079-1.022 0-1.964.328-2.762.877v10.123h9.089c1.607 0 2.911-1.393 2.911-3.106 0-2.233-2.168-3.772-4.121-2.815zm-16.879-.027c-.302-.024-.526-.03-1 .122v5.689h1v-5.811z\"/>\n        </svg>\n      </div>\n    </a>\n\n  \n  </div>\n</div>\n</div>\n<style>\n.icon-list--horizontal {\n  margin-top: 30px;\n  display: flex;\n  flex-direction: row;\n  flex-wrap: nowrap;\n  align-items: center;\n  gap: 1.5rem;\n  text-align: center;\n  justify-content: center;\n}\n.icon-list__item {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  text-decoration: none;\n  white-space: nowrap;\n}\n.section-content {\n  text-align: center;\n}\n.icon-list {\n  text-align: center;\n  display: flex;\n}\n.icon-list__icon {\n  height: 30px;\n  width: auto;\n}\n</style>"
+          }
+        },
+        "text_FUyy6W": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Pair text with media to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "custom_liquid_FDjR9V",
+        "heading_LiHbyV",
+        "custom_liquid_VyWhwd",
+        "button_mf8z8U",
+        "custom_liquid_DwDeNr",
+        "text_FUyy6W"
+      ],
+      "custom_css": [
+        ".media-text .meta {background-image: url(\"https://cdn.shopify.com/s/files/1/0984/6266/2958/files/STAR_RING_posterize.png?v=1775242992\"); background-size: cover; text-align: center;}",
+        ".button {font-size: 13px; letter-spacing: 0.5px; font-weight: 500; padding: 15px 15px;}"
+      ],
+      "name": "Media with text",
+      "settings": {
+        "mediaType": "image",
+        "image": "shopify://shop_images/CCB_keyart_v1_984cf0ab-e1df-41f6-a6fd-09305287f7c8.jpg",
+        "video": "shopify://files/videos/mdn-test.mov",
+        "videoLoop": true,
+        "videoMute": true,
+        "videoAutoplay": true,
+        "clickToPlay": false,
+        "playPause": false,
+        "image_order": "1",
+        "sticky_content": true,
+        "textAlignment": "center",
+        "global_color_scheme": false,
+        "color_scheme": "scheme-b5d18686-5f4f-4299-88ef-353915541c47"
+      }
+    },
+    "gs_featured_products_HfkBhQ": {
+      "type": "gs-featured-products",
+      "disabled": true,
+      "custom_css": [
+        "span.price-item {display: none !important;}"
+      ],
+      "name": "Featured products",
+      "settings": {
+        "heading": "NEXT DROP COMING SOON | PREVIEW NOW",
+        "url": "",
+        "product_list": [
+          "preview-product-copy",
+          "preview-product",
+          "preview-product-1"
+        ],
+        "horizontalScroller": "none",
+        "global_color_scheme": true,
+        "color_scheme": "coretex-1"
+      }
+    },
+    "gs_hero_TaJpz3": {
+      "type": "gs-hero",
+      "custom_css": [
+        "h1 {font-size: 30px; letter-spacing: 1px;}",
+        ".button {font-size: 13px; letter-spacing: 0.5px; font-weight: 500; padding: 12px 25px;}"
+      ],
+      "name": "Hero banner",
+      "settings": {
+        "mediaType": "video",
+        "imgClickable": false,
+        "video": "shopify://files/videos/FIREAWAY mv merch2.mp4",
+        "videoLoop": true,
+        "videoMute": true,
+        "videoAutoplay": true,
+        "clickToPlay": false,
+        "playPause": false,
+        "cropVideo": false,
+        "heroHeight": "uncropped",
+        "heroHeightMobile": "default",
+        "title": "FIRE AWAY (ft. slayyyter)",
+        "headingTag": "h1",
+        "content": "",
+        "cta": "LISTEN NOW",
+        "url": "https://madeon.lnk.to/fireaway",
+        "contentPosition": "bottom center",
+        "contentDirection": "column",
+        "textAlignment": "center",
+        "contentPositionMob": "bottom center",
+        "contentDirectionMob": "column",
+        "textAlignmentMob": "center",
+        "heroMetaH1hasBg": false,
+        "global_color_scheme": false,
+        "color_scheme": "coretex-3"
+      }
+    },
+    "gs_events_BAj78d": {
+      "type": "gs-events",
+      "blocks": {
+        "event_Ef4766": {
+          "type": "event",
+          "settings": {
+            "name": "Event name",
+            "desc": "",
+            "date": "Friday, 31/12/3000",
+            "time": "18:30",
+            "location": "<p>Event location name</p>",
+            "locationOnMaps": "",
+            "moreInfo": "",
+            "expired": false
+          }
+        }
+      },
+      "block_order": [
+        "event_Ef4766"
+      ],
+      "disabled": true,
+      "name": "Event",
+      "settings": {
+        "all": "View all events",
+        "link": "",
+        "global_color_scheme": true,
+        "color_scheme": ""
+      }
+    },
+    "gs_countdown_Y3kQQY": {
+      "type": "gs-countdown",
+      "blocks": {
+        "heading_JweCz9": {
+          "type": "heading",
+          "settings": {
+            "heading": "Next Drop starts"
+          }
+        },
+        "countdown_mUrDPm": {
+          "type": "countdown",
+          "settings": {
+            "date": "12-31-2026",
+            "time": "00:00:00",
+            "now": "auto",
+            "timezone": "",
+            "show_weeks": false,
+            "show_seconds": true,
+            "final_message": "It's over!",
+            "hide_others": false
+          }
+        },
+        "button_t9VgMj": {
+          "type": "button",
+          "settings": {
+            "label": "SIGN UP FOR EARLY ACCESS",
+            "url": "",
+            "style": "button"
+          }
+        }
+      },
+      "block_order": [
+        "heading_JweCz9",
+        "countdown_mUrDPm",
+        "button_t9VgMj"
+      ],
+      "disabled": true,
+      "name": "Countdown timer",
+      "settings": {
+        "show_image": true,
+        "order": "3",
+        "orderMob": "1",
+        "justify-content": "center",
+        "items_alignment": "center",
+        "inline_layout": false,
+        "large_font": true,
+        "global_color_scheme": true,
+        "color_scheme": ""
+      }
+    }
+  },
+  "order": [
+    "gs_hero_z9BKMH",
+    "gs_marquee_nNYf3K",
+    "gs_featured_collection_WB4aiH",
+    "s_liquid_Vnpxij",
+    "gs_featured_products_bVFLHK",
+    "gs_media_text_XbfqmW",
+    "gs_featured_products_HfkBhQ",
+    "gs_hero_TaJpz3",
+    "gs_events_BAj78d",
+    "gs_countdown_Y3kQQY"
+  ]
+}

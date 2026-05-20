@@ -1,0 +1,711 @@
+{%- comment -%}
+================================================================================
+sections/footer-alternate.liquid
+Alternate brand footer for Bullet Theme 6.0.0
+================================================================================
+{%- endcomment -%}
+
+{%- style -%}
+/* Alternate Brand Footer Color Overrides */
+#footerAlternate {
+    --bg: {{ section.settings.footer_bg_color }};
+    --bgRGB: {{ section.settings.footer_bg_color | color_extract: 'red' }}, {{ section.settings.footer_bg_color | color_extract: 'green' }}, {{ section.settings.footer_bg_color | color_extract: 'blue' }};
+    --color: {{ section.settings.footer_text_color }};
+    --colorRGB: {{ section.settings.footer_text_color | color_extract: 'red' }}, {{ section.settings.footer_text_color | color_extract: 'green' }}, {{ section.settings.footer_text_color | color_extract: 'blue' }};
+    --globalBorder: {{ section.settings.footer_border_color }};
+    background-color: var(--bg);
+    color: var(--color);
+}
+
+#footerAlternate a {
+    color: {{ section.settings.footer_link_color }};
+}
+
+#footerAlternate a:hover {
+    color: {{ section.settings.footer_link_hover }};
+}
+
+#footerAlternate h1,
+#footerAlternate h2,
+#footerAlternate h3,
+#footerAlternate h4,
+#footerAlternate h5,
+#footerAlternate h6,
+#footerAlternate .h1,
+#footerAlternate .h2,
+#footerAlternate .h3,
+#footerAlternate .h4,
+#footerAlternate .h5,
+#footerAlternate .h6 {
+    color: {{ section.settings.footer_heading_color }};
+}
+
+#footerAlternate .text-bold,
+#footerAlternate strong {
+    color: {{ section.settings.footer_heading_color }};
+}
+
+/* Newsletter styling */
+#footerAlternate #f-newsletter input[type="email"] {
+    background-color: {{ section.settings.newsletter_input_bg }};
+    color: {{ section.settings.newsletter_input_text }};
+    border-color: {{ section.settings.footer_border_color }};
+      width: 100%;
+    margin-bottom: 5px;
+}
+
+#footerAlternate #f-newsletter input[type="email"]::placeholder {
+    color: {{ section.settings.newsletter_input_text }};
+    opacity: 0.6;
+}
+
+#footerAlternate #f-newsletter button,
+#footerAlternate #f-newsletter input[type="submit"] {
+    background-color: {{ section.settings.newsletter_button_bg }};
+    color: {{ section.settings.newsletter_button_text }};
+}
+
+#footerAlternate #f-newsletter button:hover,
+#footerAlternate #f-newsletter input[type="submit"]:hover {
+    opacity: 0.9;
+}
+
+/* Social icons */
+#footerAlternate .foosocial a {
+    color: {{ section.settings.footer_link_color }};
+}
+
+#footerAlternate .foosocial a:hover {
+    color: {{ section.settings.footer_link_hover }};
+}
+
+{%- endstyle -%}
+
+<footer id="footerAlternate" class="footer-alternate" data-brand="{{ section.settings.brand_name | handleize }}">
+    <x-flex direction-s="column" wrap="wrap">
+        {%- for block in section.blocks -%}
+            {%- case block.type -%}
+                {%- when 'liquid' -%}
+                    <x-cell id="f-liquid-{{ block.id }}" class="hasb" data-fullwidth="{{ block.settings.fullwidth }}" {{ block.shopify_attributes }}>
+                        <div class="rte">{{ block.settings.liquid }}</div>
+                    </x-cell>
+
+                {%- when 'image' -%}
+                    <x-cell id="f-image" class="hasb" data-fullwidth="{{ block.settings.fullwidth }}" {{ block.shopify_attributes }}>
+                        <x-flex ai="center" {{ block.settings.alignment | replace: 'left', 'start' | replace: 'right', 'end' | prepend: 'jc="' | append: '"' }} class="image" style="--_imgSize:{% if block.settings.image_fullwidth %}100%{% else %}{{ block.settings.size | append: 'px' }}{% endif %};">
+                            {%- liquid 
+                                assign img = block.settings.image
+                                assign width = block.settings.size
+                                render 'inc-img' img: img, loading: 'lazy', fetchpriority: 'low', fallback: true, width: width
+                            -%}
+                        </x-flex>
+                    </x-cell>
+
+                {%- when 'motto' -%}
+                    <x-cell id="f-motto" class="hasb" data-fullwidth="{{ block.settings.fullwidth }}" {{ block.shopify_attributes }}>
+                        <div class="mpti rte">{{ block.settings.motto }}</div>
+                    </x-cell>
+
+                {%- when 'newsletter' -%}
+                    <x-cell id="f-newsletter" class="hasb" data-fullwidth="{{ block.settings.fullwidth }}" {{ block.shopify_attributes }}>
+                        <x-flex direction="column">
+                            <x-cell>
+                                <p>{{ block.settings.footerNewsletterTitle }}</p>
+                            </x-cell>
+                            <x-cell>
+                                {%- comment -%} Custom newsletter form with brand tagging {%- endcomment -%}
+                                {%- form 'customer', id: 'footer-newsletter-alternate', class: 'footer-newsletter' -%}
+                                    <input type="hidden" name="contact[tags]" value="newsletter,{{ section.settings.brand_name | handleize }}">
+                                    <div class="newsletter-form">
+                                        <input 
+                                            type="email" 
+                                            name="contact[email]" 
+                                            placeholder="{{ 'footer.email_placeholder' | t | default: 'Enter your email' }}"
+                                            required
+                                            autocomplete="email"
+                                        >
+                                        <button type="submit">{{ 'footer.subscribe' | t | default: 'Subscribe' }}</button>
+                                    </div>
+                                {%- endform -%}
+                            </x-cell>
+                        </x-flex>
+                    </x-cell>
+
+                {%- when 'menu' -%}
+                    <x-cell
+                        id="f-links"
+                        class="hasb"
+                        data-fullwidth="{{ block.settings.fullwidth }}"
+                        data-multicolumn="{{ block.settings.multicolumn }}"
+                        data-nested="{{ block.settings.show_nested }}"
+                        {{ block.shopify_attributes }}
+                    >
+                       <x-flex class="f-links" jc="{{ block.settings.alignment_desktop | replace: 'left', 'start' | replace: 'right', 'end' }}" jc-s="{{ block.settings.alignment_mobile | replace: 'left', 'start' | replace: 'right', 'end' }}">
+                                {%- liquid
+                                    assign menu_links = linklists[block.settings.menu].links
+                                    assign show_nested = false
+                                    assign columns = 1
+                                    assign has_top_level_links = false
+                                    assign has_nested_items = false
+                                    assign element = 'x-flex'
+
+                                    if block.settings.multicolumn == true
+                                        assign element = 'x-grid'
+
+                                        if block.settings.show_nested == true
+                                            assign columns = 0
+                                            for link in menu_links
+                                                if link.links.size > 0
+                                                    assign has_nested_items = true
+                                                    assign columns = columns | plus: 1
+                                                else
+                                                    assign has_top_level_links = true
+                                                endif
+                                            endfor
+
+                                            if has_nested_items == true
+                                                assign show_nested = true
+                                                if has_top_level_links == true
+                                                    assign columns = columns | plus: 1
+                                                endif
+                                                if columns > 4
+                                                    assign columns = 4
+                                                endif
+                                            else
+                                                assign total_links = menu_links.size
+                                                if total_links <= 5
+                                                    assign columns = 1
+                                                else
+                                                    assign columns = total_links | divided_by: 3 | plus: 1
+                                                endif
+                                                if columns > 4
+                                                    assign columns = 4
+                                                endif
+                                            endif
+                                        else
+                                            assign total_links = menu_links.size
+                                            if total_links <= 5
+                                                assign columns = 1
+                                            else
+                                                assign columns = total_links | divided_by: 3 | plus: 1
+                                            endif
+                                            if columns > 4
+                                                assign columns = 4
+                                            endif
+                                        endif
+                                    endif
+                                -%}
+
+                                {%- if show_nested == true -%}
+                                    <x-grid columns="{{ columns }}" columns-s="2">
+                                        {%- for link in menu_links -%}
+                                            {%- if link.links.size > 0 -%}
+                                                <x-cell>
+                                                    <h3 class="h6"><a href="{{ link.url }}" class="no-style text-bold">{{ link.title }}</a></h3>
+                                                    <ul class="no-style">
+                                                        {%- for child_link in link.links -%}
+                                                            <li>
+                                                                <a href="{{ child_link.url }}" class="no-style">{{ child_link.title }}</a>
+                                                            </li>
+                                                        {%- endfor -%}
+                                                    </ul>
+                                                </x-cell>
+                                            {%- endif -%}
+                                        {%- endfor -%}
+
+                                        {%- if has_top_level_links == true -%}
+                                            <x-cell>
+                                                <ul class="no-style">
+                                                    {%- for link in menu_links -%}
+                                                        {%- if link.links.size == 0 -%}
+                                                            <li>
+                                                                <a href="{{ link.url }}" class="no-style">{{ link.title }}</a>
+                                                            </li>
+                                                        {%- endif -%}
+                                                    {%- endfor -%}
+                                                </ul>
+                                            </x-cell>
+                                        {%- endif -%}
+                                    </x-grid>
+
+                                {%- else -%}
+                                    <{{ element }} wrap="wrap" columns="{{ columns }}" columns-s="2">
+                                        {%- for link in menu_links -%}
+                                            <x-cell>
+                                                <a href="{{ link.url }}" class="no-style">{{ link.title }}</a>
+                                            </x-cell>
+                                        {%- endfor -%}
+                                    </{{ element }}>
+                                {%- endif -%}
+                        </x-flex>
+                    </x-cell>
+
+                {%- when 'legalLinks' -%}
+                    <x-cell
+                            id="f-links"
+                            class="hasb"
+                            data-fullwidth="{{ block.settings.fullwidth }}"
+                            data-multicolumn="{{ block.settings.multicolumn }}"
+                            {{ block.shopify_attributes }}
+                        >
+                        <x-flex class="f-links" jc="{{ block.settings.alignment_desktop | replace: 'left', 'start' | replace: 'right', 'end' }}" jc-s="{{ block.settings.alignment_mobile | replace: 'left', 'start' | replace: 'right', 'end' }}">
+                            <x-cell>
+                            <ul class="no-style">
+                                {%- if block.settings.legalMenu != null -%}
+                                    {%- assign linklist = block.settings.legalMenu -%}
+                                    {%- for link in linklists[linklist].links -%}
+                                        <li><a href="{{ link.url }}" class="no-style">{{ link.title }}</a></li>
+                                    {%- endfor -%}
+                                {%- else -%}
+                                    {%- for policy in shop.policies -%}
+                                    {%- if policy != blank -%}
+                                        <li><a href="{{ policy.url }}" class="no-style">{{ policy.title }}</a></li>
+                                    {%- endif -%}
+                                    {%- endfor -%}
+                                {%- endif -%}
+                            </ul>
+                            </x-cell>
+                        </x-flex>
+                    </x-cell>
+
+                {%- when 'socials' -%}
+                    {%- capture social_items -%}{%- render 'global-social' -%}{%- endcapture -%}
+                    {%- assign social_items = social_items | strip -%}
+                    {%- assign has_follow_on_shop = false -%}
+                    {%- if shop.features.follow_on_shop? and block.settings.enable_follow_on_shop -%}
+                        {%- assign has_follow_on_shop = true -%}
+                    {%- endif -%}
+                    {%- if social_items != blank or has_follow_on_shop -%}
+                    <x-cell id="f-socials" class="ssocialss" data-fullwidth="{{ block.settings.fullwidth }}" {{ block.shopify_attributes }}>
+                        <ul
+                            class="foosocial mob-scroll no-style{% if settings.iconsTrue == true %} iconstrue{% endif %}"
+                            jc="{{ block.settings.alignment_desktop | replace: 'left', 'start' | replace: 'right', 'end' }}"
+                            jc-s="{{ block.settings.alignment_mobile | replace: 'left', 'start' | replace: 'right', 'end' }}"
+                        >
+                            {{ social_items }}
+
+                            {%- if has_follow_on_shop -%}
+                                <li class="follow-on-shop">{{ shop | login_button: action: 'follow' }}</li>
+                            {%- endif -%}
+                        </ul>
+                    </x-cell>
+                    {%- endif -%}
+
+                {%- when 'copyright' -%}
+                    <x-cell id="f-copyright" class="hasb" data-fullwidth="{{ block.settings.fullwidth }}" {{ block.shopify_attributes }}>
+                        <x-flex jc="{{ block.settings.alignment_desktop | replace: 'left', 'start' | replace: 'right', 'end' }}" jc-s="{{ block.settings.alignment_mobile | replace: 'left', 'start' | replace: 'right', 'end' }}">
+                            <p class="copyright">
+                                &copy; {{ 'now' | date: '%Y' }} {{ section.settings.brand_name | default: shop.name }}. {{ block.settings.copyright_text }}
+                            </p>
+                        </x-flex>
+                    </x-cell>
+
+            {%- endcase -%}
+        {%- endfor -%}
+    </x-flex>
+</footer>
+ 
+{% schema %}
+{
+  "name": "Footer - Alternate Brand",
+  "class": "main-footer-alternate",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Brand Identity"
+    },
+    {
+      "type": "text",
+      "id": "brand_name",
+      "label": "Brand name",
+      "default": "Secondary Brand",
+      "info": "Used for copyright and newsletter tagging"
+    },
+    {
+      "type": "header",
+      "content": "Footer Colors"
+    },
+    {
+      "type": "color",
+      "id": "footer_bg_color",
+      "label": "Background",
+      "default": "#1a1a2e"
+    },
+    {
+      "type": "color",
+      "id": "footer_text_color",
+      "label": "Body text",
+      "default": "#a0a0a0"
+    },
+    {
+      "type": "color",
+      "id": "footer_heading_color",
+      "label": "Headings",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "footer_link_color",
+      "label": "Links",
+      "default": "#d0d0d0"
+    },
+    {
+      "type": "color",
+      "id": "footer_link_hover",
+      "label": "Link hover",
+      "default": "#e94560"
+    },
+    {
+      "type": "color",
+      "id": "footer_border_color",
+      "label": "Borders",
+      "default": "#2a2a4a"
+    },
+    {
+      "type": "header",
+      "content": "Newsletter Colors"
+    },
+    {
+      "type": "color",
+      "id": "newsletter_input_bg",
+      "label": "Input background",
+      "default": "#2a2a4a"
+    },
+    {
+      "type": "color",
+      "id": "newsletter_input_text",
+      "label": "Input text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "newsletter_button_bg",
+      "label": "Button background",
+      "default": "#e94560"
+    },
+    {
+      "type": "color",
+      "id": "newsletter_button_text",
+      "label": "Button text",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "liquid",
+      "name": "Custom Liquid",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "liquid",
+          "label": "Custom Liquid"
+        },
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "checkbox",
+          "id": "fullwidth",
+          "label": "Full width row",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Image / Logo",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Upload your alternate brand logo"
+        },
+        {
+          "type": "checkbox",
+          "id": "image_fullwidth",
+          "label": "Full width",
+          "default": false
+        },
+        {
+          "type": "range",
+          "id": "size",
+          "label": "Size",
+          "min": 20,
+          "max": 300,
+          "step": 5,
+          "unit": "px",
+          "default": 100
+        },
+        {
+          "type": "text_alignment",
+          "id": "alignment",
+          "label": "Alignment",
+          "default": "left"
+        },
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "checkbox",
+          "id": "fullwidth",
+          "label": "Full width row",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Newsletter",
+          "info": "Subscribers tagged with brand name for segmentation"
+        },
+        {
+          "type": "text",
+          "id": "footerNewsletterTitle",
+          "label": "Heading",
+          "default": "Get 10% off your next purchase. Subscribe to our newsletter."
+        },
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "checkbox",
+          "id": "fullwidth",
+          "label": "Full width row",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "menu",
+      "name": "Menu",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu",
+          "default": "footer",
+          "info": "Select or create a menu for this brand"
+        },
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "checkbox",
+          "id": "fullwidth",
+          "label": "Full width row",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "multicolumn",
+          "label": "Multi-column",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "show_nested",
+          "label": "Show nested menu items",
+          "default": false,
+          "info": "First-level links become column titles"
+        },
+        {
+          "type": "header",
+          "content": "Alignment"
+        },
+        {
+          "type": "text_alignment",
+          "id": "alignment_desktop",
+          "label": "Desktop",
+          "default": "left"
+        },
+        {
+          "type": "text_alignment",
+          "id": "alignment_mobile",
+          "label": "Mobile",
+          "default": "left"
+        }
+      ]
+    },
+    {
+      "type": "legalLinks",
+      "name": "Terms and policies",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Store policies used by default unless you select a menu."
+        },
+        {
+          "type": "link_list",
+          "id": "legalMenu",
+          "label": "Menu"
+        },
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "checkbox",
+          "id": "fullwidth",
+          "label": "Full width row",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "multicolumn",
+          "label": "Multi-column menu",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Alignment"
+        },
+        {
+          "type": "text_alignment",
+          "id": "alignment_desktop",
+          "label": "Desktop",
+          "default": "left"
+        },
+        {
+          "type": "text_alignment",
+          "id": "alignment_mobile",
+          "label": "Mobile",
+          "default": "left"
+        }
+      ]
+    },
+    {
+      "type": "socials",
+      "name": "Social media",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Uses social links from Theme Settings"
+        },
+        {
+          "type": "header",
+          "content": "Follow on Shop"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_follow_on_shop",
+          "label": "Enable Follow on Shop",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "checkbox",
+          "id": "fullwidth",
+          "label": "Full width row",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Alignment"
+        },
+        {
+          "type": "text_alignment",
+          "id": "alignment_desktop",
+          "label": "Desktop",
+          "default": "left"
+        },
+        {
+          "type": "text_alignment",
+          "id": "alignment_mobile",
+          "label": "Mobile",
+          "default": "left"
+        }
+      ]
+    },
+    {
+      "type": "motto",
+      "name": "About your business",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "motto",
+          "label": "Description",
+          "default": "<p>Use this for brand-specific information.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "checkbox",
+          "id": "fullwidth",
+          "label": "Full width row",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "copyright",
+      "name": "Copyright",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "copyright_text",
+          "label": "Additional text",
+          "default": "All rights reserved."
+        },
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "checkbox",
+          "id": "fullwidth",
+          "label": "Full width row",
+          "default": true
+        },
+        {
+          "type": "header",
+          "content": "Alignment"
+        },
+        {
+          "type": "text_alignment",
+          "id": "alignment_desktop",
+          "label": "Desktop",
+          "default": "center"
+        },
+        {
+          "type": "text_alignment",
+          "id": "alignment_mobile",
+          "label": "Mobile",
+          "default": "center"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "image" },
+      { "type": "motto" },
+      { "type": "newsletter" },
+      { "type": "menu" },
+      { "type": "socials" },
+      { "type": "legalLinks" },
+      { "type": "copyright" }
+    ]
+  }
+}
+{% endschema %}

@@ -1,0 +1,145 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header",
+  "sections": {
+    "header-marquee": {
+      "type": "header-marquee",
+      "disabled": true,
+      "name": "Announcement bar",
+      "settings": {
+        "homeOnly": false,
+        "marqueeMarquee": true,
+        "marqueeDirection": "true",
+        "marqueeSpeeds": 15,
+        "marqueePause": true,
+        "notice": "",
+        "link": "",
+        "global_color_scheme": true,
+        "color_scheme": "coretex-1"
+      }
+    },
+    "header-countdown": {
+      "type": "gs-countdown",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Heading"
+          }
+        },
+        "countdown": {
+          "type": "countdown",
+          "settings": {
+            "date": "02-18-2027",
+            "time": "10:00:00",
+            "now": "auto",
+            "timezone": "",
+            "show_weeks": false,
+            "show_seconds": true,
+            "final_message": "It's over!",
+            "hide_others": false
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "label": "Get the deal!",
+            "url": "",
+            "style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "countdown",
+        "button"
+      ],
+      "disabled": true,
+      "name": "Countdown timer",
+      "settings": {
+        "show_image": false,
+        "order": "1",
+        "orderMob": "1",
+        "justify-content": "center",
+        "items_alignment": "center",
+        "inline_layout": true,
+        "large_font": false,
+        "global_color_scheme": true,
+        "color_scheme": "coretex-1"
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "menu": {
+          "type": "menu",
+          "settings": {
+            "menu": "main-menu",
+            "menu_type": "dropdown",
+            "open_on_hover": false,
+            "block_alignment": "left",
+            "dropdown_alignment": "left"
+          }
+        },
+        "logo": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/MADEON-VICTORY-LOGO-blk.png",
+            "image_size": 25,
+            "name": "",
+            "logo_font": "inter_n4",
+            "font_size": 15,
+            "block_alignment": "center"
+          }
+        },
+        "utility": {
+          "type": "utility",
+          "settings": {
+            "show_cart": true,
+            "show_search": false,
+            "accountLink": true,
+            "show_language": false,
+            "show_country": false,
+            "block_alignment": "right"
+          }
+        }
+      },
+      "block_order": [
+        "menu",
+        "logo",
+        "utility"
+      ],
+      "custom_css": [
+        "a {text-transform: uppercase; font-size: 12px; letter-spacing: 0.75px;}"
+      ],
+      "settings": {
+        "headerPosition": true,
+        "boxed_mode": false,
+        "expand_central": false,
+        "show_dropdown_caret": true,
+        "show_borders": false,
+        "outline_links": true,
+        "show_icons": false,
+        "accountLinkMob": true,
+        "homeOverlay": false,
+        "bgFill": "transparent",
+        "global_color_scheme": true,
+        "color_scheme": "coretex-2"
+      }
+    }
+  },
+  "order": [
+    "header-marquee",
+    "header-countdown",
+    "header"
+  ]
+}
