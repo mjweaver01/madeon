@@ -1,0 +1,79 @@
+{
+  "type": "header",
+  "name": "Victory header",
+  "sections": {
+    "header-alternate": {
+      "type": "header-alternate",
+      "blocks": {
+        "menu": {
+          "type": "menu",
+          "settings": {
+            "menu": "main-menu",
+            "menu_type": "dropdown",
+            "open_on_hover": false,
+            "block_alignment": "left",
+            "dropdown_alignment": "left"
+          }
+        },
+        "logo": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/metal_logo2.png",
+            "image_size": 95,
+            "mobile_image_size": 20,
+            "name": "",
+            "logo_font": "inter_n4",
+            "font_size": 15,
+            "block_alignment": "center"
+          }
+        },
+        "utility": {
+          "type": "utility",
+          "settings": {
+            "show_cart": true,
+            "show_search": false,
+            "accountLink": true,
+            "show_language": false,
+            "show_country": false,
+            "block_alignment": "right"
+          }
+        }
+      },
+      "block_order": [
+        "menu",
+        "logo",
+        "utility"
+      ],
+      "custom_css": [
+        "a {text-transform: uppercase; font-size: 13px; letter-spacing: 0.75px;}"
+      ],
+      "settings": {
+        "brand_name": "Victory Band",
+        "header_bg_color": "#000000",
+        "header_text_color": "#ffffff",
+        "header_link_hover": "#ffffff",
+        "header_border_color": "#000000",
+        "dropdown_bg_color": "#ffffff",
+        "dropdown_text_color": "#ffffff",
+        "mobile_menu_bg": "#1a1a2e",
+        "mobile_menu_text": "#ffffff",
+        "mobile_menu_border": "#2a2a4a",
+        "headerPosition": true,
+        "boxed_mode": false,
+        "expand_central": false,
+        "show_dropdown_caret": true,
+        "show_borders": true,
+        "outline_links": true,
+        "show_icons": false,
+        "accountLinkMob": true,
+        "homeOverlay": false,
+        "bgFill": "solid",
+        "global_color_scheme": false,
+        "color_scheme": ""
+      }
+    }
+  },
+  "order": [
+    "header-alternate"
+  ]
+}

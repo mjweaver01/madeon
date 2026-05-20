@@ -9,76 +9,6 @@
  */
 {
   "sections": {
-    "header-alternate": {
-      "type": "header-alternate",
-      "blocks": {
-        "menu": {
-          "type": "menu",
-          "settings": {
-            "menu": "main-menu",
-            "menu_type": "dropdown",
-            "open_on_hover": false,
-            "block_alignment": "left",
-            "dropdown_alignment": "left"
-          }
-        },
-        "logo": {
-          "type": "logo",
-          "settings": {
-            "image": "shopify://shop_images/metal_logo2.png",
-            "image_size": 95,
-            "mobile_image_size": 20,
-            "name": "",
-            "logo_font": "inter_n4",
-            "font_size": 15,
-            "block_alignment": "center"
-          }
-        },
-        "utility": {
-          "type": "utility",
-          "settings": {
-            "show_cart": true,
-            "show_search": false,
-            "accountLink": true,
-            "show_language": false,
-            "show_country": false,
-            "block_alignment": "right"
-          }
-        }
-      },
-      "block_order": [
-        "menu",
-        "logo",
-        "utility"
-      ],
-      "custom_css": [
-        "a {text-transform: uppercase; font-size: 13px; letter-spacing: 0.75px;}"
-      ],
-      "settings": {
-        "brand_name": "",
-        "header_bg_color": "#000000",
-        "header_text_color": "#ffffff",
-        "header_link_hover": "#ffffff",
-        "header_border_color": "#353539",
-        "dropdown_bg_color": "#16213e",
-        "dropdown_text_color": "#ffffff",
-        "mobile_menu_bg": "#1a1a2e",
-        "mobile_menu_text": "#ffffff",
-        "mobile_menu_border": "#2a2a4a",
-        "headerPosition": true,
-        "boxed_mode": false,
-        "expand_central": false,
-        "show_dropdown_caret": true,
-        "show_borders": false,
-        "outline_links": true,
-        "show_icons": false,
-        "accountLinkMob": true,
-        "homeOverlay": false,
-        "bgFill": "solid",
-        "global_color_scheme": false,
-        "color_scheme": ""
-      }
-    },
     "main": {
       "type": "t-product",
       "blocks": {
@@ -283,67 +213,6 @@
         "color_scheme": "coretex-2"
       }
     },
-    "footer-alternate": {
-      "type": "footer-alternate",
-      "blocks": {
-        "menu": {
-          "type": "menu",
-          "settings": {
-            "menu": "footer",
-            "fullwidth": false,
-            "multicolumn": true,
-            "show_nested": true,
-            "alignment_desktop": "left",
-            "alignment_mobile": "left"
-          }
-        },
-        "socials": {
-          "type": "socials",
-          "settings": {
-            "enable_follow_on_shop": false,
-            "fullwidth": false,
-            "alignment_desktop": "left",
-            "alignment_mobile": "center"
-          }
-        },
-        "newsletter_gA9Vxg": {
-          "type": "newsletter",
-          "settings": {
-            "footerNewsletterTitle": "",
-            "fullwidth": false
-          }
-        },
-        "copyright": {
-          "type": "copyright",
-          "disabled": true,
-          "settings": {
-            "copyright_text": "All rights reserved.",
-            "fullwidth": true,
-            "alignment_desktop": "center",
-            "alignment_mobile": "center"
-          }
-        }
-      },
-      "block_order": [
-        "menu",
-        "socials",
-        "newsletter_gA9Vxg",
-        "copyright"
-      ],
-      "settings": {
-        "brand_name": "",
-        "footer_bg_color": "#000000",
-        "footer_text_color": "#a0a0a0",
-        "footer_heading_color": "#ffffff",
-        "footer_link_color": "#d0d0d0",
-        "footer_link_hover": "#e94560",
-        "footer_border_color": "#353539",
-        "newsletter_input_bg": "#353539",
-        "newsletter_input_text": "#ffffff",
-        "newsletter_button_bg": "#ffffff",
-        "newsletter_button_text": "#000000"
-      }
-    },
     "gs_hero_logo_kyPyDJ": {
       "type": "gs-hero-logo",
       "name": "Hero logo",
@@ -362,12 +231,10 @@
     }
   },
   "order": [
-    "header-alternate",
     "main",
     "product-recommendations",
     "gs_hero_3PfPGc",
     "gs_featured_collection_FpUAN8",
-    "footer-alternate",
     "gs_hero_logo_kyPyDJ"
   ]
 }

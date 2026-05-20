@@ -1,0 +1,17 @@
+{%- comment -%}
+Critical paint styles for victory-band templates (vctry-landing, etc.).
+Prevents white flash and breadcrumb flicker before alternate header/footer render.
+{%- endcomment -%}
+<style id="victory-band-critical">
+html,
+body.victory-band {
+    background-color: #000;
+    color: #fff;
+}
+body.victory-band .breadcrumb {
+    display: none !important;
+}
+body.victory-band #app {
+    background-color: #000;
+}
+</style>

@@ -30,6 +30,10 @@
         endif 
 
         echo 'app.css' | asset_url | stylesheet_tag
+
+        if template.suffix contains 'victory-band'
+            render 'victory-band-critical'
+        endif
     -%}
 
     {%- # theme-check-disable -%}
@@ -72,29 +76,40 @@ src="https://www.facebook.com/tr?id=914031909160214&ev=PageView&noscript=1"
 <!-- End Meta Pixel Code -->
 
 </head>
+{%- liquid
+    assign victory_band_template = false
+    if template.suffix contains 'victory-band'
+        assign victory_band_template = true
+    endif
+-%}
 <body 
-    class="{{ settings.a11yFocusStyles }}" 
+    class="{{ settings.a11yFocusStyles }}{% if victory_band_template %} victory-band{% endif %}" 
     layout-boxed="{{ settings.boxedLayout }}" 
     coretex-page="{{ template.name }}"
     coretex-path="{{ request.path }}"
+    {% if victory_band_template %}header-type="sticky" header-boxed="false"{% endif %}
 >
     <a href="#mainContent" class="skip-to-content button is-primary visually-hidden">{{ "general.accessibility.skip_to_text" | t }}</a>
     <component-loader id="app">
-        {%- comment -%} Only show global header on non-victory-band templates {%- endcomment -%}
-        {%- unless template.suffix contains 'victory-band' -%}
+        {%- if victory_band_template -%}
+            {%- sections 'group-header-victory' -%}
+        {%- else -%}
             {%- sections 'group-header' -%}
-        {%- endunless -%}
+        {%- endif -%}
 
         <main id="mainContent">
-            {%- render 'global-breadcrumbs' -%}
+            {%- unless victory_band_template -%}
+                {%- render 'global-breadcrumbs' -%}
+            {%- endunless -%}
             {{ content_for_layout }}
         </main>
 
         {%- liquid
-            # Only show global footer on non-victory-band templates
-            unless template.suffix contains 'victory-band'
+            if victory_band_template
+                sections 'group-footer-victory'
+            else
                 sections 'group-footer'
-            endunless
+            endif
 
             sections 'group-overlay'
         -%}

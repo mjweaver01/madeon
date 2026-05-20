@@ -1,0 +1,83 @@
+{
+  "type": "footer",
+  "name": "Victory footer",
+  "sections": {
+    "footer-alternate": {
+      "type": "footer-alternate",
+      "blocks": {
+        "menu": {
+          "type": "menu",
+          "settings": {
+            "menu": "main-menu",
+            "fullwidth": false,
+            "multicolumn": true,
+            "show_nested": true,
+            "alignment_desktop": "left",
+            "alignment_mobile": "left"
+          }
+        },
+        "socials": {
+          "type": "socials",
+          "settings": {
+            "enable_follow_on_shop": false,
+            "fullwidth": false,
+            "alignment_desktop": "left",
+            "alignment_mobile": "center"
+          }
+        },
+        "menu_EyXnQd": {
+          "type": "menu",
+          "disabled": true,
+          "settings": {
+            "menu": "footer",
+            "fullwidth": false,
+            "multicolumn": true,
+            "show_nested": false,
+            "alignment_desktop": "right",
+            "alignment_mobile": "left"
+          }
+        },
+        "newsletter_DeKCRb": {
+          "type": "newsletter",
+          "settings": {
+            "footerNewsletterTitle": "",
+            "fullwidth": false
+          }
+        },
+        "copyright": {
+          "type": "copyright",
+          "disabled": true,
+          "settings": {
+            "copyright_text": "All rights reserved.",
+            "fullwidth": true,
+            "alignment_desktop": "center",
+            "alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "menu",
+        "socials",
+        "menu_EyXnQd",
+        "newsletter_DeKCRb",
+        "copyright"
+      ],
+      "settings": {
+        "brand_name": "Victory Band",
+        "footer_bg_color": "#000000",
+        "footer_text_color": "#a0a0a0",
+        "footer_heading_color": "#ffffff",
+        "footer_link_color": "#d0d0d0",
+        "footer_link_hover": "#ffffff",
+        "footer_border_color": "#efeeec",
+        "newsletter_input_bg": "#353539",
+        "newsletter_input_text": "#ffffff",
+        "newsletter_button_bg": "#ffffff",
+        "newsletter_button_text": "#000000"
+      }
+    }
+  },
+  "order": [
+    "footer-alternate"
+  ]
+}
