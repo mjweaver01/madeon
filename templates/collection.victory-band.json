@@ -160,6 +160,7 @@
     },
     "gs_featured_collection_gA4MtH": {
       "type": "gs-featured-collection",
+      "disabled": true,
       "custom_css": [
         "h2.h4 {font-size: 30px !important; font-weight: 900; letter-spacing: 0.25px;}",
         ".loadmore {display: none;}"
@@ -176,6 +177,7 @@
     },
     "gs_hero_ARiwcP": {
       "type": "gs-hero",
+      "disabled": true,
       "custom_css": [
         "h1 {font-size: 30px; letter-spacing: 1px;}",
         ".button {font-size: 13px; letter-spacing: 0.5px; font-weight: 500; padding: 12px 25px;}"
@@ -211,11 +213,7 @@
     },
     "gs_featured_collection_WfzyLz": {
       "type": "gs-featured-collection",
-      "disabled": true,
-      "custom_css": [
-        "h2.h4 {font-size: 30px !important; font-weight: 900; letter-spacing: 0.25px;}",
-        "a.no-style {font-family: \"dharma-gothic-e\", sans-serif; font-weight: 900; font-style: normal; text-transform: uppercase; font-size: 30px; color: #ed3434;}"
-      ],
+      "custom_css": [],
       "name": "Featured collection",
       "settings": {
         "homeCollection": "vctry-landing",
