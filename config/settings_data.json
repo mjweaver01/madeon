@@ -53,6 +53,7 @@
     "cart_upsell_products_title": "More",
     "cart_global_color_scheme": true,
     "cart_color_scheme": "coretex-1",
+    "cardGridCol": "3",
     "cardGridCol-m": "3",
     "cardGridCol-s": "2",
     "cardGridGap": false,
@@ -62,7 +63,7 @@
     "card_subtitle": false,
     "card_vendor": false,
     "card_badges": true,
-    "card_badges_overlay_top": false,
+    "card_badges_overlay_top": true,
     "card_show_secondary": true,
     "card_ratio": "1/1",
     "card_crop_fit": "contain",
@@ -78,6 +79,32 @@
     "themeName": "Bullet",
     "themePreset": "Bullet",
     "css": ".coretex-dialog dialog::backdrop {\nbackground: transparent;\n}\n.product-page details .dropdown-caret {\n    outline: none;\n    padding-inline: var(--padding);\n    text-transform: uppercase;\n    font-weight: var(--hWeight);\n    font-family: ff-din-paneuropean-cond, sans-serif !important;\nletter-spacing:0.75px;}",
+    "sections": {
+      "password-header": {
+        "type": "password-header",
+        "custom_css": [
+          "img.logo {max-width: 35%; text-align: center;}"
+        ],
+        "settings": {
+          "logo": "shopify://shop_images/MADEON-VICTORY-LOGO-blk.png",
+          "logoImageSize": 25,
+          "alignment": "start",
+          "global_color_scheme": true,
+          "color_scheme": ""
+        }
+      },
+      "password-footer": {
+        "type": "password-footer",
+        "settings": {
+          "social": true,
+          "password": true,
+          "heading": "Enter store using password",
+          "global_color_scheme": true,
+          "color_scheme": ""
+        }
+      }
+    },
+    "content_for_index": [],
     "color_schemes": {
       "coretex-1": {
         "settings": {
@@ -175,33 +202,7 @@
           "accent_border": "#000000"
         }
       }
-    },
-    "sections": {
-      "password-header": {
-        "type": "password-header",
-        "custom_css": [
-          "img.logo {max-width: 35%; text-align: center;}"
-        ],
-        "settings": {
-          "logo": "shopify://shop_images/MADEON-VICTORY-LOGO-blk.png",
-          "logoImageSize": 25,
-          "alignment": "start",
-          "global_color_scheme": true,
-          "color_scheme": ""
-        }
-      },
-      "password-footer": {
-        "type": "password-footer",
-        "settings": {
-          "social": true,
-          "password": true,
-          "heading": "Enter store using password",
-          "global_color_scheme": true,
-          "color_scheme": ""
-        }
-      }
-    },
-    "content_for_index": []
+    }
   },
   "installed_preset_name": "Bullet",
   "presets": {

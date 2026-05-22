@@ -27,8 +27,8 @@
         "logo": {
           "type": "logo",
           "settings": {
-            "image": "shopify://shop_images/metal_logo2.png",
-            "image_size": 95,
+            "image": "shopify://shop_images/file.gif",
+            "image_size": 120,
             "mobile_image_size": 20,
             "name": "",
             "logo_font": "inter_n4",
@@ -71,7 +71,7 @@
         "boxed_mode": false,
         "expand_central": false,
         "show_dropdown_caret": true,
-        "show_borders": true,
+        "show_borders": false,
         "outline_links": true,
         "show_icons": false,
         "accountLinkMob": true,

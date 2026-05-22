@@ -19,9 +19,20 @@
           "settings": {
             "menu": "main-menu",
             "fullwidth": false,
-            "multicolumn": true,
+            "multicolumn": false,
             "show_nested": true,
             "alignment_desktop": "left",
+            "alignment_mobile": "left"
+          }
+        },
+        "menu_EyXnQd": {
+          "type": "menu",
+          "settings": {
+            "menu": "footer",
+            "fullwidth": false,
+            "multicolumn": true,
+            "show_nested": false,
+            "alignment_desktop": "right",
             "alignment_mobile": "left"
           }
         },
@@ -30,20 +41,8 @@
           "settings": {
             "enable_follow_on_shop": false,
             "fullwidth": false,
-            "alignment_desktop": "left",
+            "alignment_desktop": "center",
             "alignment_mobile": "center"
-          }
-        },
-        "menu_EyXnQd": {
-          "type": "menu",
-          "disabled": true,
-          "settings": {
-            "menu": "footer",
-            "fullwidth": false,
-            "multicolumn": true,
-            "show_nested": false,
-            "alignment_desktop": "right",
-            "alignment_mobile": "left"
           }
         },
         "newsletter_DeKCRb": {
@@ -66,8 +65,8 @@
       },
       "block_order": [
         "menu",
-        "socials",
         "menu_EyXnQd",
+        "socials",
         "newsletter_DeKCRb",
         "copyright"
       ],

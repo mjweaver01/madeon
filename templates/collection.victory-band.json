@@ -14,7 +14,7 @@
       "name": "Hero banner",
       "settings": {
         "mediaType": "image",
-        "image": "shopify://shop_images/mdn-victory-hero.jpg",
+        "image": "shopify://shop_images/98d3f2_c288ca505784430898377d1cb9c16910-mv2.jpg",
         "imgClickable": false,
         "videoLoop": true,
         "videoMute": true,
@@ -42,6 +42,7 @@
     },
     "gs_marquee_jXJb7y": {
       "type": "gs-marquee",
+      "disabled": true,
       "custom_css": [
         "section.marquee {padding-top: 20px; padding-bottom: 20px;}"
       ],
@@ -57,6 +58,65 @@
         "font_size_mob": 3,
         "global_color_scheme": false,
         "color_scheme": "coretex-2"
+      }
+    },
+    "gs_collage_QaX8h8": {
+      "type": "gs-collage",
+      "blocks": {
+        "image_KwjNE4": {
+          "type": "image",
+          "settings": {
+            "span": "span=1",
+            "image": "shopify://shop_images/spikey.png",
+            "imgFullheight": false,
+            "url": "",
+            "openNewWindow": false
+          }
+        },
+        "image_7YCJ4Y": {
+          "type": "image",
+          "settings": {
+            "span": "span=1",
+            "image": "shopify://shop_images/spikey.png",
+            "imgFullheight": false,
+            "url": "",
+            "openNewWindow": false
+          }
+        },
+        "image_PpXxtP": {
+          "type": "image",
+          "settings": {
+            "span": "span=1",
+            "image": "shopify://shop_images/spikey.png",
+            "imgFullheight": false,
+            "url": "",
+            "openNewWindow": false
+          }
+        },
+        "image_jRkDbN": {
+          "type": "image",
+          "settings": {
+            "span": "span=1",
+            "image": "shopify://shop_images/spikey.png",
+            "imgFullheight": false,
+            "url": "",
+            "openNewWindow": false
+          }
+        }
+      },
+      "block_order": [
+        "image_KwjNE4",
+        "image_7YCJ4Y",
+        "image_PpXxtP",
+        "image_jRkDbN"
+      ],
+      "name": "Collage",
+      "settings": {
+        "title": "Collage",
+        "show_borders": true,
+        "horizontalScroller": false,
+        "global_color_scheme": true,
+        "color_scheme": ""
       }
     },
     "main": {
@@ -101,7 +161,8 @@
     "gs_featured_collection_gA4MtH": {
       "type": "gs-featured-collection",
       "custom_css": [
-        "h2.h4 {font-size: 16px !important;}"
+        "h2.h4 {font-size: 30px !important; font-weight: 900; letter-spacing: 0.25px;}",
+        ".loadmore {display: none;}"
       ],
       "name": "Featured collection",
       "settings": {
@@ -148,6 +209,23 @@
         "color_scheme": "coretex-2"
       }
     },
+    "gs_featured_collection_WfzyLz": {
+      "type": "gs-featured-collection",
+      "disabled": true,
+      "custom_css": [
+        "h2.h4 {font-size: 30px !important; font-weight: 900; letter-spacing: 0.25px;}",
+        "a.no-style {font-family: \"dharma-gothic-e\", sans-serif; font-weight: 900; font-style: normal; text-transform: uppercase; font-size: 30px; color: #ed3434;}"
+      ],
+      "name": "Featured collection",
+      "settings": {
+        "homeCollection": "vctry-landing",
+        "show_heading": false,
+        "howmany": 6,
+        "horizontalScroller": "none",
+        "global_color_scheme": false,
+        "color_scheme": "coretex-2"
+      }
+    },
     "gs_hero_C8yhaF": {
       "type": "gs-hero",
       "name": "Hero banner",
@@ -189,8 +267,8 @@
         "size": 45,
         "size_s": 40,
         "alignment": "center",
-        "paddingStart": 0,
-        "paddingEnd": 0,
+        "paddingStart": 10,
+        "paddingEnd": 10,
         "global_color_scheme": false,
         "color_scheme": "coretex-2"
       }
@@ -199,10 +277,12 @@
   "order": [
     "gs_hero_NJ9aQx",
     "gs_marquee_jXJb7y",
+    "gs_collage_QaX8h8",
     "main",
     "gs_marquee_7Lbgtr",
     "gs_featured_collection_gA4MtH",
     "gs_hero_ARiwcP",
+    "gs_featured_collection_WfzyLz",
     "gs_hero_C8yhaF",
     "gs_hero_logo_XMtEKh"
   ]
